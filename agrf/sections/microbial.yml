@@ -34,7 +34,7 @@ tabs:
          
       - title_md: What files are included?
         description_md: |
-           | Fileanme                                                                                     | Description                                                                                                                                                                                                                                                                                                  |
+           | Filename                                                                                     | Description                                                                                                                                                                                                                                                                                                  |
            | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
            | **Raw Data**                                                                                 |                                                                                                                                                                                                                                                                                                              |
            | Demultiplexed \*.FASTQ file (1 file per sample)                                              | Contains sequencing reads for each sample                                                                                                                                                                                                                                                                    |
@@ -400,3 +400,4 @@ tabs:
   #       description_md: Contact AGRF for more help with your data. 
   #       button_md: Contact AGRF
   #       button_link: /request/support
+
