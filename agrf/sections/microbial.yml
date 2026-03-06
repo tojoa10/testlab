@@ -303,7 +303,7 @@ tabs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
-             
+
                button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
 
 
@@ -335,8 +335,6 @@ tabs:
                  datatypes:
                   - qza
                   - tsv
-              
-               
 
                button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_correlation%2Fqiime2__diversity__alpha_correlation"
 
@@ -354,7 +352,18 @@ tabs:
                   - tsv
 
                button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_group_significance%2Fqiime2__diversity__alpha_group_significance"
+               
+             - title_md: <code>qiime2 diversity pcoa</code> - Principal coordinates analysis 
+               description_md: |
+                Perform principal coordinates analysis (PCoA) on a beta diversity distance matrix to visualize the relationships between samples in a reduced dimensional space.
 
+               inputs:
+               - label: QIIME 2 Artifact file - Distance Matrix
+                 datatypes:
+                  - qza
+
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__pcoa%2Fqiime2__diversity__pcoa"
+            
              - title_md: <code>qiime2 diversity beta-rarefaction</code> - Assess sequencing depth sufficiency
                description_md: |
                 QIIME 2 repeatedly subsamples (rarefies) each sample’s sequence data at different depths (e.g., 1000, 2000, 3000 reads, etc.). 
