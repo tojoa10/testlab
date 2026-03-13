@@ -389,7 +389,15 @@ tabs:
                button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_rarefaction%2Fqiime2__diversity__alpha_rarefaction"
 
 
-
+             - title_md: <code>Krona</code> - Interactive taxonomic visualisation
+               description_md: |
+                 Krona generates interactive hierarchical visualisations of taxonomic abundance.
+               inputs:
+               - label: Taxonomy classification table
+                 datatypes:
+                  - tsv
+                  - biom
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fsaskia-hiltemann%2Fkrona_text%2Fkrona-text"
 
 
 
