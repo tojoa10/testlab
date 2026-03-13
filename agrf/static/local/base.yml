@@ -5,7 +5,7 @@
 site_name: "Australia"
 lab_name: AGRF Lab #this will be in caps, at right of logo
 #or: use the word lab, in same font as agrf logo
-galaxy_base_url: https://agrf.usegalaxy.org.au
+galaxy_base_url: https://usegalaxy.org.au
 subdomain: agrf
 root_domain: usegalaxy.org.au
 
