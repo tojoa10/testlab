@@ -164,6 +164,19 @@ tabs:
               view_tip: View in QIIME2
               
 
+            - title_md: <code>qiime2 feature-table filter-samples</code> - Filter samples using metadata
+              description_md: |
+               Remove samples from a feature table based on sample metadata.
+               This can be used to exclude groups or remove outlier samples before downstream analysis.
+              inputs:
+               - label: QIIME 2 Artifact file - FeatureTable[Frequency]
+                 datatypes:
+                  - qza
+               - label: sample metadata
+                 datatypes:
+                  - tsv
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__feature_table__filter_samples%2Fqiime2__feature_table__filter_samples"
+
           - id: alpha_diversity
             title: Alpha Diversity          
 
