@@ -68,14 +68,17 @@ then add Section, so data becomes dataSection
     <div class="col-md-4 d-flex">
       <div class="grid-item flex-fill"><a href="#microbialSection">Microbial Profiling</a></div>
     </div>
-
     <!-- Row 2 -->
+    <div class="col-md-4 d-flex">
+      <div class="grid-item flex-fill"><a href="#rnaseqSection">RNASeq</a></div>
+    </div>
     <div class="col-md-4 d-flex">
       <div class="grid-item flex-fill"><a href="#learnSection">Learn Galaxy</a></div>
     </div>
     <div class="col-md-4 d-flex">
       <div class="grid-item flex-fill"><a href="#helpSection">Galaxy Help</a></div>
     </div>
+    <!-- Row 3 -->
     <div class="col-md-4 d-flex">
       <div class="grid-item flex-fill"><a href="#agrfSection">Contact AGRF</a></div>
     </div>

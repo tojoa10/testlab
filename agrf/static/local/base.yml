@@ -26,6 +26,7 @@ sections:
   - sections/data.yml
   - sections/qualitycontrol.yml
   - sections/microbial.yml
+  - sections/rnaseq.yml
 #  - sections/moreanalysis.yml
   - sections/learn.yml
 #  - sections/help.yml
