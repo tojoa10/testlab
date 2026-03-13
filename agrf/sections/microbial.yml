@@ -399,6 +399,32 @@ tabs:
                   - biom
                button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fsaskia-hiltemann%2Fkrona_text%2Fkrona-text"
 
+             - title_md: <code>qiime2 feature-table heatmap</code> - Visualise feature abundance as a heatmap
+               description_md: |
+                 Generate a heatmap representation of a feature table to visualise abundance patterns across samples.
+               inputs: 
+                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
+                  datatypes:
+                    - qza
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__feature_table__heatmap%2Fqiime2__feature_table__heatmap"
+
+
+
+             - title_md: <code>qiime2 taxa barplot</code> - Visualise taxonomic composition
+               description_md: |
+                 Generate interactive stacked bar plots showing the relative abundance of taxa across samples.
+               inputs:
+                - label: Feature table with taxonomy
+                  datatypes:
+                    - qza
+                - label: Taxonomy assignments
+                  datatypes:
+                    - qza
+                - label: sample metadata
+                  datatypes:
+                    - tsv
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__taxa__barplot%2Fqiime2__taxa__barplot"
+
 
 
   - id: tutorials
