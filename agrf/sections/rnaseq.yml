@@ -1,0 +1,52 @@
+id: rnaseq
+title: RNASeq
+tabs:
+  - id: overview
+    title: Overview
+    heading_md: 
+    content:
+      - title_md: RNASeq workflow
+        description_md: |
+          RNA sequencing (RNASeq) measures gene expression levels across samples.
+          The workflow includes alignment, filtering, normalization,
+          differential expression analysis and visualization.
+
+  - id: tools
+    title: Tools
+    content:
+      subsections:
+
+        - id: alignment
+          title: Alignment
+          content:
+            - title_md: <code>STAR</code> - Align reads to reference
+              description_md: |
+                Align RNASeq reads to a reference genome using STAR.
+              button_md: Run STAR
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Frgrnastar%2Frna_star"
+
+        - id: analysis
+          title: Differential expression
+          content:
+            - title_md: <code>edgeR</code>
+              description_md: |
+                Differential gene expression analysis.
+
+            - title_md: <code>DESeq2</code>
+              description_md: |
+                Identify differentially expressed genes between groups.
+
+        - id: visualisation
+          title: Visualisation
+          content:
+            - title_md: PCA
+              description_md: |
+                Explore sample clustering.
+
+            - title_md: Heatmap
+              description_md: |
+                Display gene expression patterns.
+
+            - title_md: Volcano plot
+              description_md: |
+                Visualise differential expression results.
