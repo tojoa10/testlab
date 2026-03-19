@@ -88,10 +88,24 @@ tabs:
             - title_md: <code>edgeR</code>
               description_md: |
                 Differential gene expression analysis.
+              inputs:
+                - label: Gene count matrix
+                  datatypes:
+                    - tsv
+                - label: Sample metadata
+                  datatypes:
+                    - tsv
 
             - title_md: <code>DESeq2</code>
               description_md: |
                 Identify differentially expressed genes between groups.
+              inputs:
+                - label: Gene count matrix
+                  datatypes:
+                    - tsv
+                - label: Sample metadata
+                  datatypes:
+                    - tsv
 
         - id: visualisation
           title: Visualisation
