@@ -35,6 +35,24 @@ tabs:
                 Align RNASeq reads to a reference genome using STAR.
               button_md: Run STAR
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Frgrnastar%2Frna_star"
+ 
+        - id: quantification
+          title: Gene quantification
+          content:
+            - title_md: <code>featureCounts</code> - Count reads per gene
+              description_md: |
+                Convert aligned reads (BAM files) into a gene count matrix required for downstream differential expression analysis.
+
+              inputs:
+                - label: Aligned reads (BAM)
+                  datatypes:
+                    - bam
+                - label: Gene annotation file
+                  datatypes:
+                    - gtf
+                    - gff
+              button_md: Run featureCounts  
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Ffeaturecounts%2Ffeaturecounts"
 
         - id: analysis
           title: Differential expression
