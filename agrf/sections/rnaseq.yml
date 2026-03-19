@@ -60,7 +60,7 @@ tabs:
             - title_md: Sample filtering
               description_md: |
                 Remove outlier samples or unwanted groups before analysis.
-            - title_md: <code>Filter lowly expressed genes</code>
+            - title_md: Filter lowly expressed genes
               description_md: |
                 Remove genes with low counts across samples to improve statistical power in differential expression analysis.
 
@@ -91,8 +91,8 @@ tabs:
 
             - title_md: Heatmap
               description_md: |
-                Display gene expression patterns.
+                Display gene expression patterns across samples.
 
             - title_md: Volcano plot
               description_md: |
-                Visualise differential expression results.
+                Visualise differential expression results (log fold change vs significance).
