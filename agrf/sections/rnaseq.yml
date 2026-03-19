@@ -33,6 +33,17 @@ tabs:
             - title_md: <code>STAR</code> - Align reads to reference
               description_md: |
                 Align RNASeq reads to a reference genome using STAR.
+
+              inputs:
+                - label: RNASeq reads (FASTQ)
+                  datatypes:
+                    - fastq
+                - label: Reference genome (fasta)
+                  datatypes:
+                    - fasta
+                - label: Gene annotation file (GTF)
+                  datatypes:
+                    - gtf
               button_md: Run STAR
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Frgrnastar%2Frna_star"
  
