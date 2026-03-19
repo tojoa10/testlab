@@ -63,6 +63,13 @@ tabs:
             - title_md: <code>Filter lowly expressed genes</code>
               description_md: |
                 Remove genes with low counts across samples to improve statistical power in differential expression analysis.
+
+        - id: normalization
+          title: Normalization
+          content:
+            - title_md: Normalization
+              description_md: |
+                Adjusts for differences in sequencing depth and library size between samples to allow accurate comparison of gene expression.
                 
         - id: analysis
           title: Differential expression
