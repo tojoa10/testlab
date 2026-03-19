@@ -54,6 +54,16 @@ tabs:
               button_md: Run featureCounts  
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Ffeaturecounts%2Ffeaturecounts"
 
+        - id: filtering
+          title: Filtering
+          content:
+            - title_md: Sample filtering
+              description_md: |
+                Remove outlier samples or unwanted groups before analysis.
+            - title_md: <code>Filter lowly expressed genes</code>
+              description_md: |
+                Remove genes with low counts across samples to improve statistical power in differential expression analysis.
+                
         - id: analysis
           title: Differential expression
           content:
