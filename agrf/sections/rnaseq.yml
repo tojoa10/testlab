@@ -15,7 +15,18 @@ tabs:
     title: Tools
     content:
       subsections:
+ 
+        - id: qc
+          title: Quality control
+          content:
+            - title_md: <code>FastQC</code>
+              description_md: |
+                Assess raw RNASeq read quality including base quality scores, GC content and adapter contamination.
 
+            - title_md: <code>MultiQC</code>
+              description_md: |
+                Aggregate QC reports across multiple samples into a single summary report.
+        
         - id: alignment
           title: Alignment
           content:
