@@ -25,3 +25,10 @@ tabs:
             - title_md: <code>metaSPAdes / meta-hifiasm</code>
               description_md: |
                 Assemble long-read or hybrid metagenomic data.
+        - id: assembly_qc
+          title: Assembly quality control
+          content:
+            - title_md: <code>QUAST</code>
+              description_md: |
+                Assess the quality of assembled contigs, including length, completeness and fragmentation.
+        
