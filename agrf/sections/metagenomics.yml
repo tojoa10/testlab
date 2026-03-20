@@ -31,4 +31,17 @@ tabs:
             - title_md: <code>QUAST</code>
               description_md: |
                 Assess the quality of assembled contigs, including length, completeness and fragmentation.
+        - id: binning
+          title: Binning
+          content:
+            - title_md: <code>MetaBAT2</code>
+              description_md: |
+                Group assembled contigs into genome bins representing individual microbial genomes.
+              inputs:
+                - label: Assembled contigs (FASTA)
+                  datatypes:
+                    - fasta
+                - label: BAM files (mapped reads)
+                  datatypes:
+                    - bam
         
