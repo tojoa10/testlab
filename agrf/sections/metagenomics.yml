@@ -45,3 +45,14 @@ tabs:
                   datatypes:
                     - bam
         
+        - id: binning_qc
+          title: Binning quality control
+          content:
+            - title_md: <code>CheckM2</code>
+              description_md: |
+                Assess genome bin quality by estimating completeness and contamination.
+
+          inputs:
+            - label: Genome bins
+              datatypes:
+                - fasta
