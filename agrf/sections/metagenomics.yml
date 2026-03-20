@@ -56,3 +56,14 @@ tabs:
             - label: Genome bins
               datatypes:
                 - fasta
+
+        - id: taxonomy
+          title: Taxonomic classification
+          content:
+            - title_md: <code>GTDB-Tk</code>
+              description_md: |
+                Assign taxonomy to genome bins using the Genome Taxonomy Database.
+              inputs:
+                - label: Genome bins
+                  datatypes:
+                    - fasta
