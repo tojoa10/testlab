@@ -22,10 +22,25 @@ tabs:
             - title_md: <code>FastQC</code>
               description_md: |
                 Assess raw RNASeq read quality including base quality scores, GC content and adapter contamination.
+              inputs:
+                - label: Sequencing reads (FASTQ)
+                  datatypes:
+                    - fastq
+              button_md: Run FastQC
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fdevteam%2Ffastqc%2Ffastqc"
 
             - title_md: <code>MultiQC</code>
               description_md: |
                 Aggregate QC reports across multiple samples into a single summary report.
+              inputs:
+                - label: FastQC reports
+                  datatypes:
+                    - html
+                    - zip
+              outputs:
+                - label: Summary QC report (HTML)
+              button_md: Run MultiQC
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fmultiqc%2Fmultiqc"
         
         - id: alignment
           title: Alignment
@@ -44,6 +59,8 @@ tabs:
                 - label: Gene annotation file (GTF)
                   datatypes:
                     - gtf
+              outputs:
+                - label: Aligned reads (BAM)
               button_md: Run STAR
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Frgrnastar%2Frna_star"
  
@@ -62,6 +79,8 @@ tabs:
                   datatypes:
                     - gtf
                     - gff
+              outputs:
+                - label: Gene count matrix (TSV)
               button_md: Run featureCounts  
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Ffeaturecounts%2Ffeaturecounts"
 
@@ -95,6 +114,10 @@ tabs:
                 - label: Sample metadata
                   datatypes:
                     - tsv
+              outputs:
+                - label: Differential expression results (TSV)
+              button_md: Run edgeR
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fedger%2Fedger"
 
             - title_md: <code>DESeq2</code>
               description_md: |
@@ -106,6 +129,8 @@ tabs:
                 - label: Sample metadata
                   datatypes:
                     - tsv
+              button_md: Run DESeq2
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fdeseq2%2Fdeseq2"
 
         - id: visualisation
           title: Visualisation
