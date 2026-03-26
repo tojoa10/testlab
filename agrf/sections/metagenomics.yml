@@ -7,8 +7,8 @@ tabs:
     content:
       - title_md: Metagenomics workflow
         description_md: |
-          Metagenomics analysis involves assembly, binning, taxonomic classification,
-          and functional annotation of microbial communities.
+          Metagenomics analysis involves assembly, binning, quality assessment, and taxonomic classification
+          of microbial communities.
 
   - id: tools
     title: Tools
@@ -32,7 +32,12 @@ tabs:
 
             - title_md: <code>metaSPAdes / meta-hifiasm</code>
               description_md: |
-                Assemble long-read or hybrid metagenomic data.
+                Assemble long-read or hybrid metagenomic data (e.g., PacBio).
+              inputs:
+                - label: Long reads (FASTQ)
+                  datatypes:
+                    - fastq
+              
         - id: assembly_qc
           title: Assembly quality control
           content:
