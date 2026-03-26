@@ -231,7 +231,7 @@ tabs:
 
              - title_md: <code>qiime2 diversity alpha-phylogenetic</code> - Calculate alpha diversity (with a phylogenetic tree)
                description_md: |
-                Phylogenetic alpha diversity metrics are useful when evolutionary distinctivness is relevant to your hypothesis (e.g., comparing ecosystems or communities with potentially different evolutionary histories). A common example (included om AGRF's analysis) is:
+                Phylogenetic alpha diversity metrics are useful when evolutionary distinctivness is relevant to your hypothesis (e.g., comparing ecosystems or communities with potentially different evolutionary histories). A common example (included in AGRF's analysis) is:
                 
                 * Faith's Phylogenetic Distance
 
@@ -243,8 +243,7 @@ tabs:
                   - qza
          
                button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_phylogenetic%2Fqiime2__diversity__alpha_phylogenetic"
-               button_link: /request/vcs
-
+              
              - title_md: <code>qiime2 diversity alpha-correlation</code> - Correlate alpha diversity with sample metadata
                description_md: |
                 Determine whether numeric sample metadata columns are correlated with alpha diversity.
@@ -327,7 +326,7 @@ tabs:
                  datatypes:
                   - qza
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta%2Fqiime2__diversity__beta"
 
 
              - title_md: <code>qiime2 diversity beta-phylogenetic</code> - Calculate beta diversity (with a phylogenetic tree)
@@ -343,9 +342,8 @@ tabs:
                  datatypes:
                   - qza
          
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_phylogenetic%2Fqiime2__diversity__alpha_phylogenetic"
-               button_link: /request/vcs
-
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta_phylogenetic%2Fqiime2__diversity__beta_phylogenetic"
+               
              - title_md: <code>qiime2 diversity beta-correlation</code> - Correlate beta diversity with sample metadata
                description_md: |
                 Determine whether numeric sample metadata columns are correlated with beta diversity.
@@ -359,7 +357,7 @@ tabs:
                   - qza
                   - tsv
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_correlation%2Fqiime2__diversity__alpha_correlation"
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta_correlation%2Fqiime2__diversity__beta_correlation"
 
              - title_md: <code>qiime2 diversity beta-group-significance</code> - Correlate beta diversity with groups in sample metadata
                description_md: |
@@ -374,7 +372,7 @@ tabs:
                   - qza
                   - tsv
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_group_significance%2Fqiime2__diversity__alpha_group_significance"
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta_group_significance%2Fqiime2__diversity__beta_group_significance"
                
              - title_md: <code>qiime2 diversity pcoa</code> - Principal coordinates analysis 
                description_md: |
@@ -399,7 +397,7 @@ tabs:
                  datatypes:
                   - qza
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_rarefaction%2Fqiime2__diversity__alpha_rarefaction"
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta_rarefaction%2Fqiime2__diversity__beta_rarefaction"
 
 
              - title_md: <code>PICRUSt2 metagenome prediction</code> - Predict microbial functions
