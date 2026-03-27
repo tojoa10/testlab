@@ -125,6 +125,21 @@ tabs:
               button_md: Run featureCounts  
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Ffeaturecounts%2Ffeaturecounts"
 
+            - title_md: <code>StringTie</code>
+              description_md: |
+                Assemble transcripts and estimate gene expression from aligned RNASeq reads.
+              inputs:
+                - label: Aligned reads (BAM)
+                  datatypes:
+                    - bam
+                - label: Reference annotation (GTF)
+                  datatypes:
+                    - gtf
+              outputs:
+                - label: Transcript assembly (GTF)
+              button_md: Run StringTie
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstringtie%2Fstringtie"
+
         - id: filtering
           title: Filtering
           content:
