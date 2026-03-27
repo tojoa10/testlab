@@ -96,9 +96,9 @@ tabs:
     title: Tools
     content: 
       subsections:
-          - id: QIIME2_formats
-            title: Working with QIIME 2 files
-            content:
+        - id: QIIME2_formats
+          title: Working with QIIME 2 files
+          content:
 
             - title_md: <i>Details</i>
               description_md: |
@@ -132,7 +132,6 @@ tabs:
               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2_core__tools__export%2Fqiime2_core__tools__export"
 
 
-            
             - title_md: <code>qiime2 feature-table summarize</code> - Summarize feature table
               description_md: |
                Generate a summary of a feature table, including counts per sample and feature frequency distribution.
@@ -166,8 +165,8 @@ tabs:
 
             - title_md: <code>qiime2 feature-table filter-samples</code> - Filter samples using metadata
               description_md: |
-               Remove samples from a feature table based on sample metadata.
-               This can be used to exclude groups or remove outlier samples before downstream analysis.
+               Filter samples using metadata to remove outliers or exclude specific groups before analysis.
+              
               inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
@@ -177,14 +176,14 @@ tabs:
                   - tsv
               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__feature_table__filter_samples%2Fqiime2__feature_table__filter_samples"
 
-          - id: alpha_diversity
-            title: Alpha Diversity          
+        - id: alpha_diversity
+          title: Alpha Diversity          
 
-            content:  
+          content:  
 
-             - title_md: <i>Details</i>
-               description_md: |
-                Alpha diversity measures the diversity *within* a single sample. There are a number of different metrics used. AGRF's analysis includes four alpha diversity metrics (stored within separate .qza files).
+            - title_md: <i>Details</i>
+              description_md: |
+               Alpha diversity measures the diversity *within* a single sample. There are a number of different metrics used. AGRF's analysis includes four alpha diversity metrics (stored within separate .qza files).
 
                  - `observed_features_vector.qza` - Sample richness per sample. A count of the number of features (i.e. species) observed per sample.
                  - `shannon_vector.qza` - Shannon entropy (i.e. Shannon index) for each sample. This is a quantitative measure of community richness (number of species present) and evenness. Specifically, it quantifies the uncertainty in predicting the species of an individual microbe (or effectively a read) taken at random from the sample.          
@@ -194,14 +193,14 @@ tabs:
                 Each .qza file contains alpha-diversity.tsv which can be extracted in Galaxy using the `qiime tools export` tool. The .tsv contains two columns: [<i><small>sample name.fastq</small></i>] , [<i><small>alpha diversity metric</small></i>]
 
             
-               inputs:
+              inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
 
 
-             - title_md: <code>qiime2 diversity alpha</code> - Calculate alpha diversity (non-phylogenetic)
-               description_md: |
+            - title_md: <code>qiime2 diversity alpha</code> - Calculate alpha diversity (non-phylogenetic)
+              description_md: |
                 Non-phylogenetic alpha diversity metrics provide a general overview of diversity based on counts or proportions. Common examples (included in AGRF's analysis) are: 
 
                 * Observed features (richness)
@@ -210,12 +209,12 @@ tabs:
 
                 Use this tool to calculate other non-phylogenetic alpha diversity metrics.
 
-               inputs:
+              inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
               
-               buttons:
+              buttons:
                 - icon: run
                   link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
                   tip: QIIME2 - Alpha diversity
@@ -226,29 +225,29 @@ tabs:
                   link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_phylogenetic%2Fqiime2__diversity__alpha_phylogenetic"
                   tip: QIIME2 - Alpha diversity (phlyogenetic)
 
-               #button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
 
 
-             - title_md: <code>qiime2 diversity alpha-phylogenetic</code> - Calculate alpha diversity (with a phylogenetic tree)
-               description_md: |
+            - title_md: <code>qiime2 diversity alpha-phylogenetic</code> - Calculate alpha diversity (with a phylogenetic tree)
+              description_md: |
                 Phylogenetic alpha diversity metrics are useful when evolutionary distinctivness is relevant to your hypothesis (e.g., comparing ecosystems or communities with potentially different evolutionary histories). A common example (included in AGRF's analysis) is:
                 
                 * Faith's Phylogenetic Distance
 
                 Use this tool to calculate other phylogenetic alpha diversity metrics.
                 
-               inputs:
+              inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
          
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_phylogenetic%2Fqiime2__diversity__alpha_phylogenetic"
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_phylogenetic%2Fqiime2__diversity__alpha_phylogenetic"
               
-             - title_md: <code>qiime2 diversity alpha-correlation</code> - Correlate alpha diversity with sample metadata
-               description_md: |
+            - title_md: <code>qiime2 diversity alpha-correlation</code> - Correlate alpha diversity with sample metadata
+              description_md: |
                 Determine whether numeric sample metadata columns are correlated with alpha diversity.
 
-               inputs:
+              inputs:
                - label: QIIME 2 Artifact file - Alpha Diversity
                  datatypes:
                   - qza
@@ -257,13 +256,13 @@ tabs:
                   - qza
                   - tsv
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_correlation%2Fqiime2__diversity__alpha_correlation"
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_correlation%2Fqiime2__diversity__alpha_correlation"
 
-             - title_md: <code>qiime2 diversity alpha-group-significance</code> - Correlate alpha diversity with groups in sample metadata
-               description_md: |
+            - title_md: <code>qiime2 diversity alpha-group-significance</code> - Correlate alpha diversity with groups in sample metadata
+              description_md: |
                 Visually and statistically compare groups of alpha diversity values.
 
-               inputs:
+              inputs:
                - label: QIIME 2 Artifact file - Alpha Diversity
                  datatypes:
                   - qza
@@ -272,26 +271,26 @@ tabs:
                   - qza
                   - tsv
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_group_significance%2Fqiime2__diversity__alpha_group_significance"
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_group_significance%2Fqiime2__diversity__alpha_group_significance"
 
-             - title_md: <code>qiime2 diversity alpha-rarefaction</code> - Assess sequencing depth sufficiency
-               description_md: |
+            - title_md: <code>qiime2 diversity alpha-rarefaction</code> - Assess sequencing depth sufficiency
+              description_md: |
                 QIIME 2 repeatedly subsamples (rarefies) each sample’s sequence data at different depths (e.g., 1000, 2000, 3000 reads, etc.). 
                 For each depth, it calculates an alpha diversity metric (e.g., Shannon index, Faith's PD).
                 It does this multiple times per depth to account for random variation (controlled by the --p-iterations parameter).
                 The result is a curve for each sample showing diversity vs. sampling effort.
 
-               inputs:
+              inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_rarefaction%2Fqiime2__diversity__alpha_rarefaction"
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_rarefaction%2Fqiime2__diversity__alpha_rarefaction"
 
-          - id: beta_diversity
-            title: Beta Diversity          
+        - id: beta_diversity
+          title: Beta Diversity          
 
-            content:  
+          content:  
 
              - title_md: <i>Details</i>
                description_md: |
@@ -302,7 +301,7 @@ tabs:
                  - `evenness_vector.qza` - Pielous evenness index for each sample. A measure of how close in numbers (sequence counts) each species in a sample is. It is the ratio of the Shannon index to the maximum possible Shannon index if every species was equally likely. Value between 0 and 1. The closer to 1 the more even.         
                  - `faith_pd_vector.qza` - Faiths phylogenetic distance. A phylogenetically aware alpha diversity metric. Equal to the sum of all branch lengths of the phylogenetic tree that spans all members of the sample. The higher the number the greater the diversity.
 
-                Each .qza file contains alpha-diversity.tsv which can be extracted in Galaxy using the `qiime tools export' tool. The .tsv contains two columns: `[sample name.fastq]` , `[alpha diversity metric]`
+                Each .qza file contains alpha-diversity.tsv which can be extracted in Galaxy using the `qiime tools export` tool. The .tsv contains two columns: `[sample name.fastq]` , `[alpha diversity metric]`
 
             
                inputs:
@@ -331,7 +330,7 @@ tabs:
 
              - title_md: <code>qiime2 diversity beta-phylogenetic</code> - Calculate beta diversity (with a phylogenetic tree)
                description_md: |
-                Phylogenetic beta diversity metrics are useful when evolutionary distinctivness is relevant to your hypothesis (e.g., comparing ecosystems or communities with potentially different evolutionary histories). A common example (included om AGRF's analysis) is:
+                Phylogenetic beta diversity metrics are useful when evolutionary distinctivness is relevant to your hypothesis (e.g., comparing ecosystems or communities with potentially different evolutionary histories). A common example (included in AGRF's analysis) is:
                 
                 * Faith's Phylogenetic Distance
 
@@ -399,7 +398,20 @@ tabs:
 
                button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta_rarefaction%2Fqiime2__diversity__beta_rarefaction"
 
+             - title_md: <code>qiime2 composition ancom</code> - Differential abundance of taxa
+               description_md: |
+                Identify taxa that are differentially abundant between groups using ANCOM.
 
+               inputs:
+               - label: Feature Table
+                 datatypes:
+                  - qza
+               - label: sample metadata
+                 datatypes:
+                  - tsv 
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__composition__ancom%2Fqiime2__composition__ancom"
+
+        
              - title_md: <code>PICRUSt2 metagenome prediction</code> - Predict microbial functions
                description_md: |
                  Predict microbial functional profiles such as gene families and metabolic pathways from microbial community data.
