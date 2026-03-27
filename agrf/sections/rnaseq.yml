@@ -41,7 +41,18 @@ tabs:
                 - label: Summary QC report (HTML)
               button_md: Run MultiQC
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fmultiqc%2Fmultiqc"
-        
+
+            - title_md: <code>Trim Galore</code> - Trim adapters and low-quality bases
+              description_md: |
+                Remove adapter sequences and low-quality bases from RNASeq reads before alignment.
+              inputs:
+                - label: Sequencing reads (FASTQ)
+                  datatypes:
+                    - fastq
+              outputs:
+                - label: Trimmed reads (FASTQ)
+              button_md: Run Trim Galore
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fbgruening%2Ftrim_galore%2Ftrim_galore"
         - id: alignment
           title: Alignment
           content:
