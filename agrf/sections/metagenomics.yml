@@ -102,3 +102,11 @@ tabs:
                 - label: Taxonomic classification (TSV)
               button_md: Run GTDB-Tk
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fgtdbtk_classify_wf%2Fgtdbtk_classify_wf"
+
+  - id: tutorials
+    title: Tutorials
+    content:
+      - title_md: Metagenomics analysis tutorials
+        description_md: Learn how to perform metagenomic classification, assembly, and functional analysis in Galaxy.
+        button_md: Tutorials
+        button_link: https://training.galaxyproject.org/training-material/topics/metagenomics/

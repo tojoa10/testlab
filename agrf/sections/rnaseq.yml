@@ -216,3 +216,13 @@ tabs:
                     - tsv
               button_md: Run Volcano plot
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fvolcanoplot%2Fvolcanoplot"
+
+
+  - id: tutorials
+    title: Tutorials
+    heading_md:
+    content:
+      - title_md: RNA-seq analysis workflow tutorial
+        description_md: tool
+        button_md: Tutorials
+        button_link:  https://training.galaxyproject.org/training-material/topics/transcriptomics/
