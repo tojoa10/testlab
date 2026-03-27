@@ -53,6 +53,20 @@ tabs:
                 - label: Trimmed reads (FASTQ)
               button_md: Run Trim Galore
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fbgruening%2Ftrim_galore%2Ftrim_galore"
+
+            - title_md: <code>sortmerna</code>
+              description_md: |
+                Remove rRNA reads from RNASeq data.
+              inputs:
+                - label: Sequencing reads (FASTQ)
+                  datatypes:
+                    - fastq
+              outputs:
+                - label: Filtered reads (FASTQ)
+              button_md: Run sortmerna
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Frnateam%2Fsortmerna%2Fbg_sortmerna"
+
+              
         - id: alignment
           title: Alignment
           content:
