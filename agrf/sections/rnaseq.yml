@@ -66,7 +66,7 @@ tabs:
               button_md: Run sortmerna
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Frnateam%2Fsortmerna%2Fbg_sortmerna"
 
-              
+
         - id: alignment
           title: Alignment
           content:
@@ -88,6 +88,22 @@ tabs:
                 - label: Aligned reads (BAM)
               button_md: Run STAR
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Frgrnastar%2Frna_star"
+
+        - id: post_alignment
+          title: BAM processing
+          content:
+            - title_md: <code>samtools sort</code>
+              description_md: |
+                Sort aligned reads (BAM) by genomic coordinates.
+
+              inputs:
+                - label: Aligned reads (BAM)
+                  datatypes:
+                    - bam
+              outputs:
+                - label: Sorted BAM 
+              button_md: Run samtools sort
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fdevteam%2Fsamtools_sort%2Fsamtools_sort"
  
         - id: quantification
           title: Gene quantification
