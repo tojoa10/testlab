@@ -19,7 +19,7 @@ tabs:
         - id: qc
           title: Quality control
           content:
-            - title_md: <code>FastQC</code>
+            - title_md: <code>FastQC</code> - Assess sequencing read quality
               description_md: |
                 Assess raw RNASeq read quality including base quality scores, GC content and adapter contamination.
               inputs:
@@ -29,7 +29,7 @@ tabs:
               button_md: Run FastQC
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fdevteam%2Ffastqc%2Ffastqc"
 
-            - title_md: <code>MultiQC</code>
+            - title_md: <code>MultiQC</code> - Aggregate QC reports
               description_md: |
                 Aggregate QC reports across multiple samples into a single summary report.
               inputs:
@@ -54,7 +54,7 @@ tabs:
               button_md: Run Trim Galore
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fbgruening%2Ftrim_galore%2Ftrim_galore"
 
-            - title_md: <code>sortmerna</code>
+            - title_md: <code>sortmerna</code> - Remove rRNA contamination
               description_md: |
                 Remove rRNA reads from RNASeq data.
               inputs:
@@ -70,7 +70,7 @@ tabs:
         - id: alignment
           title: Alignment
           content:
-            - title_md: <code>STAR</code> - Align reads to reference
+            - title_md: <code>STAR</code> - Align reads to reference genome
               description_md: |
                 Align RNASeq reads to a reference genome using STAR.
 
@@ -92,7 +92,7 @@ tabs:
         - id: post_alignment
           title: BAM processing
           content:
-            - title_md: <code>samtools sort</code>
+            - title_md: <code>samtools sort</code> - Sort BAM files
               description_md: |
                 Sort aligned reads (BAM) by genomic coordinates.
 
@@ -125,7 +125,7 @@ tabs:
               button_md: Run featureCounts  
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Ffeaturecounts%2Ffeaturecounts"
 
-            - title_md: <code>StringTie</code>
+            - title_md: <code>StringTie</code> - Assemble and quantify transcripts
               description_md: |
                 Assemble transcripts and estimate gene expression from aligned RNASeq reads.
               inputs:
@@ -160,7 +160,7 @@ tabs:
         - id: analysis
           title: Differential expression
           content:
-            - title_md: <code>edgeR</code>
+            - title_md: <code>edgeR</code> - Differential expression analysis
               description_md: |
                 Differential gene expression analysis.
               inputs:
@@ -175,7 +175,7 @@ tabs:
               button_md: Run edgeR
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fedger%2Fedger"
 
-            - title_md: <code>DESeq2</code>
+            - title_md: <code>DESeq2</code> - Differential gene expression analysis
               description_md: |
                 Identify differentially expressed genes between groups.
               inputs:
@@ -193,11 +193,11 @@ tabs:
         - id: visualisation
           title: Visualisation
           content:
-            - title_md: PCA
+            - title_md: PCA - Visualise sample clustering
               description_md: |
                 Explore sample clustering using principal component analysis.
               
-            - title_md: Heatmap
+            - title_md: Heatmap - Visualise gene expression patterns
               description_md: |
                 Display gene expression patterns across samples.
               inputs:
@@ -207,7 +207,7 @@ tabs:
               button_md: Run Heatmap
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fggplot2_heatmap2%2Fggplot2_heatmap2"
 
-            - title_md: Volcano plot
+            - title_md: Volcano plot - Visualise differential expression results
               description_md: |
                 Visualise differential expression results (log fold change vs significance).
               inputs:
