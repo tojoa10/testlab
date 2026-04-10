@@ -18,7 +18,7 @@ tabs:
         - id: assembly
           title: Assembly
           content:
-            - title_md: <code>MEGAHIT</code>
+            - title_md: <code>MEGAHIT</code> - Assemble short-reads into contigs
               description_md: |
                 Assemble short reads into contigs for metagenomic analysis.
               inputs:
@@ -30,7 +30,7 @@ tabs:
               button_md: Run MEGAHIT
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fmegahit%2Fmegahit"
 
-            - title_md: <code>metaSPAdes / meta-hifiasm</code>
+            - title_md: <code>metaSPAdes / meta-hifiasm</code> - Assemble long-reads or hybrid reads
               description_md: |
                 Assemble long-read or hybrid metagenomic data (e.g., PacBio).
               inputs:
@@ -41,7 +41,7 @@ tabs:
         - id: assembly_qc
           title: Assembly quality control
           content:
-            - title_md: <code>QUAST</code>
+            - title_md: <code>QUAST</code> - Assess assembly quality
               description_md: |
                 Assess the quality of assembled contigs, including length, completeness and fragmentation.
               inputs:
@@ -56,7 +56,7 @@ tabs:
         - id: binning
           title: Binning
           content:
-            - title_md: <code>MetaBAT2</code>
+            - title_md: <code>MetaBAT2</code> - Bin contigs into genomes
               description_md: |
                 Group assembled contigs into genome bins representing individual microbial genomes.
               inputs:
@@ -74,7 +74,7 @@ tabs:
         - id: binning_qc
           title: Binning quality control
           content:
-            - title_md: <code>CheckM2</code>
+            - title_md: <code>CheckM2</code> - Assess completeness and contamination
               description_md: |
                 Assess genome bin quality by estimating completeness and contamination.
 
@@ -91,7 +91,7 @@ tabs:
         - id: taxonomy
           title: Taxonomic classification
           content:
-            - title_md: <code>GTDB-Tk</code>
+            - title_md: <code>GTDB-Tk</code> - Assign taxonomy to genome bins
               description_md: |
                 Assign taxonomy to genome bins using the Genome Taxonomy Database.
               inputs:
