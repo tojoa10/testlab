@@ -465,7 +465,7 @@ tabs:
     content:
 
       - title_md: Calculating α and β diversity from microbiome taxonomic data 
-        description_md: tool
+        description_md:  Learn how to analyse microbiome data in Galaxy, including calculating alpha and beta diversity, exploring taxonomic composition, and visualising microbial community differences.
         button_md: Tutorials
         button_link: https://training.galaxyproject.org/training-material//topics/microbiome/tutorials/diversity/tutorial.html
 
