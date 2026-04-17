@@ -107,6 +107,6 @@ tabs:
     title: Tutorials
     content:
       - title_md: Metagenomics analysis tutorials
-        description_md: Learn how to perform metagenomic classification, assembly, and functional analysis in Galaxy.
+        description_md: Learn how to perform metagenomic analysis in Galaxy, including taxonomic classification, assembly, binning, and downstream functional analysis workflows.
         button_md: Tutorials
         button_link: https://training.galaxyproject.org/training-material/topics/metagenomics/
