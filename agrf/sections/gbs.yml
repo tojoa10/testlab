@@ -1,0 +1,110 @@
+id: gbs
+title: GBS
+
+tabs:
+  - id: overview
+    title: Overview
+    content:
+      - title_md: GBS (ddRADSeq) workflow
+        description_md: |
+            Genotyping-by-sequencing (GBS/ddRADSeq) analysis using the STACKS pipeline.
+            This workflow supports locus construction, catalog matching, variant calling,
+            and downstream population genetics analysis.
+
+  - id: tools
+    title: Tools
+    content:
+      subsections:
+        - id: stacks
+          title: STACKS workflow
+          content:
+
+            - title_md: <code>ustacks</code> - Build loci for each sample
+              description_md: |
+                Build loci from sequencing reads for each sample.
+              inputs:
+                - label: Sequencing reads (FASTQ)
+                  datatypes:
+                    - fastqsanger
+                    - fasta
+              outputs:
+                - label: Sample loci
+              button_md: Run ustacks
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstacks_ustacks%2Fstacks_ustacks"
+        
+            - title_md: <code>cstacks</code> - Create catalog of loci
+              description_md: |
+                Create a catalog of loci across multiple samples.
+              inputs:
+                - label: Loci from multiple samples
+                  datatypes:
+                    - tabular
+              outputs:
+                - label: Catalog of loci
+              button_md: Run cstacks
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstacks_cstacks%2Fstacks_cstacks"
+
+            - title_md: <code>sstacks</code> - Match samples to catalog
+              description_md: |
+                Match each sample to the catalog of loci.
+              inputs:
+                - label: Sample loci
+                  datatypes:
+                    - tabular
+                - label: Catalog of loci
+                  datatypes:
+                    - tabular
+              outputs:
+                - label: Matches to catalog
+              button_md: Run sstacks
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstacks2_sstacks%2Fstacks2_sstacks"
+
+            - title_md: <code>tsv2bam</code> - Convert TSV to BAM
+              description_md: |
+                Convert TSV genotype data into BAM format for downstream analysis.
+              inputs:
+                - label: Loci and polymorphism
+                  datatypes:
+                    - tabular
+                - label: Catalog of loci
+                  datatypes:
+                    - tabular
+                - label: Matches to catalog
+                  datatypes:
+                    - tabular
+              outputs:
+                - label: BAM alignments
+              button_md: Run tsv2bam
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstacks2_tsv2bam%2Fstacks2_tsv2bam"
+
+            - title_md: <code>gstacks</code> - Assemble loci and call variants
+              description_md: |
+                Assemble loci, align reads, and perform variant calling.
+              inputs:
+                - label: BAM alignments
+                  datatypes:
+                    - bam
+              outputs:
+                - label: Variant calls and assembled loci
+              button_md: Run gstacks
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstacks2_gstacks%2Fstacks2_gstacks"
+
+            - title_md: <code>populations</code> - Population genetics analysis
+              description_md: |
+                Generate population-level statistics and export results for downstream analysis.
+              inputs:
+                - label: Variant calls / loci
+                  datatypes:
+                    - vcf
+              outputs:
+                - label: Population statistics and export files
+              button_md: Run populations
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstacks2_populations%2Fstacks2_populations"
+
+  - id: tutorials
+    title: Tutorials
+    content:
+      - title_md: GBS analysis tutorials
+        description_md: Explore Galaxy Training Network tutorials for variant analysis workflows relevant to GBS and population genomics studies.
+        button_md: Tutorials
+        button_link: https://training.galaxyproject.org/training-material/topics/variant-analysis/
