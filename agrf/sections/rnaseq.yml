@@ -223,6 +223,6 @@ tabs:
     heading_md:
     content:
       - title_md: RNA-seq analysis workflow tutorial
-        description_md: tool
+        description_md: Learn how to perform RNA-seq analysis in Galaxy, including read preprocessing, alignment, transcript assembly, and differential gene expression analysis.
         button_md: Tutorials
         button_link:  https://training.galaxyproject.org/training-material/topics/transcriptomics/
