@@ -6,72 +6,49 @@ tabs:
     content:
       - title_md: About the service
         description_md: |
-          RNA sequencing (RNASeq) is used to quantify gene expression and identify differentially expressed genes across biological conditions. In this workflow, raw sequencing reads are quality checked, filtered, and aligned to a reference genome using STAR. Gene-level quantification is performed using featureCounts or StringTie, followed by statistical analysis using edgeR or DESeq2.
+          RNA sequencing (RNASeq) is used to quantify gene expression and identify differentially expressed genes across biological conditions.
+
+          In this workflow, raw sequencing reads are quality checked, trimmed if required, and aligned to a reference genome using STAR. Gene-level quantification is performed using featureCounts or StringTie, followed by statistical analysis using edgeR or DESeq2.
 
           This pipeline enables identification of transcriptional changes, biological pathway alterations, and potential biomarkers associated with experimental conditions.
 
       - title_md: Results include
         description_md: |
-          RNASeq analysis generates multiple output files at different stages of the workflow.
+          **Raw read data** - Demultiplexed sequencing reads in FASTQ format
 
-          **Processed read data**
-          - Quality filtered FASTQ files (optional after trimming)
+          **Quality control outputs** - FastQC reports and MultiQC summary
 
-          **Alignment outputs**
-          - BAM files containing aligned reads
-          - Sorted and indexed BAM files
+          **Alignment outputs** - BAM files containing mapped reads
 
-          **Quantification outputs**
-          - Gene-level count matrix (tabular format)
-          - Transcript abundance estimates (StringTie output)
+          **Quantification outputs** - Gene count matrices and transcript abundance estimates
 
-          **Differential expression results**
-          - Tables of differentially expressed genes (log fold change, p-values, adjusted p-values)
+          **Differential expression results** - Tables of differentially expressed genes (log fold change, p-values, adjusted p-values)
 
-          **Visualisation outputs**
-          - PCA plots (sample clustering)
-          - Heatmaps (expression patterns)
-          - Volcano plots (significance vs fold change)
+          **Visualisation outputs** - PCA plots, heatmaps, and volcano plots
 
       - title_md: What files are included?
         description_md: |
-          **Raw Data**
-          - Demultiplexed FASTQ files (per sample) containing sequencing reads
-
-          **Quality Control**
-          - FastQC reports (HTML) providing per-sample quality metrics
-          - MultiQC summary report aggregating quality results across all samples
-
-          **Alignment**
-          - BAM files containing reads mapped to the reference genome
-
-          **Quantification**
-          - Gene count matrix (.tsv or .txt) containing gene-level expression values
-          - Transcript abundance files (StringTie output)
-
-          **Differential Expression**
-          - DEG results table (.tsv) including log fold change, p-values, and adjusted p-values
-
-          **Visualisation**
-          - PCA plots, heatmaps, and volcano plots for downstream interpretation
+          | **Filename** | **Description** |
+          |-------------|----------------|
+          | Demultiplexed *.FASTQ files | Raw sequencing reads for each sample |
+          | fastqc_report.html / multiqc_report.html | Quality control reports |
+          | aligned_reads.bam | Reads aligned to the reference genome |
+          | gene_counts.tsv | Gene-level count matrix |
+          | transcript_abundance.tsv | Transcript abundance estimates (StringTie output) |
+          | deg_results.tsv | Differential expression results (logFC, p-values, adjusted p-values) |
+          | pca_plot.png | Sample clustering visualisation |
+          | heatmap.png | Expression pattern visualisation |
+          | volcano_plot.png | Significance vs fold-change visualisation |
 
       - title_md: File formats used
         description_md: |
-          **.fastq**
-          - Raw sequencing reads
-
-          **.bam**
-          - Binary alignment file storing mapped reads
-
-          **.tsv / .txt**
-          - Tabular files containing gene counts and statistical results
-
-          **.html**
-          - Quality control reports (FastQC, MultiQC)
-
-          **.csv**
-          - Processed results and downstream analysis tables (e.g., DEG results)
-
+          | **Type** | **Description** |
+          |---------|----------------|
+          | .fastq | Raw sequencing reads |
+          | .bam | Binary alignment files storing mapped reads |
+          | .tsv / .txt | Tabular files containing counts and statistical results |
+          | .html | Quality control reports (FastQC, MultiQC) |
+          | .png | Visualisation outputs such as PCA, heatmaps, and volcano plots |
   - id: tools
     title: Tools
     content:
