@@ -5,11 +5,51 @@ tabs:
   - id: overview
     title: Overview
     content:
-      - title_md: GBS (ddRADSeq) workflow
+      - title_md: About the service
         description_md: |
-            Genotyping-by-sequencing (GBS/ddRADSeq) analysis using the STACKS pipeline.
-            This workflow supports locus construction, catalog matching, variant calling,
-            and downstream population genetics analysis.
+          Genotyping-by-sequencing (GBS/ddRADSeq) is used to identify genetic variants across multiple samples for population genetics and related studies.
+
+          AGRF currently runs GBS analysis using NGSEP because it is efficient for larger sample sets. However, NGSEP is not currently available in Galaxy. This Galaxy section therefore provides STACKS tools as an alternative option for users who want to reanalyse raw FASTQ data in Galaxy.
+
+          Users may also import existing VCF outputs into Galaxy for downstream filtering and analysis using tools such as VCFtools and PLINK.
+
+      - title_md: Results include
+        description_md: |
+          **Raw read data** - Demultiplexed sequencing reads in FASTQ format
+
+          **Variant calls** - VCF files containing SNP and genotype information
+
+          **Consensus sequences** - FASTA files containing consensus sequences
+
+          **Filtered variant outputs** - VCF files filtered by missingness, minor allele frequency, or other criteria
+
+          **PLINK outputs** - Files prepared for downstream population genetic analysis
+
+          **Distance and visualisation outputs** - IBS distance matrix and heatmap-style outputs for sample comparison
+
+      - title_md: What files are included?
+        description_md: |
+          | **Filename** | **Description** |
+          |-------------|----------------|
+          | Demultiplexed *.FASTQ files | Raw sequencing reads for each sample |
+          | variants.vcf | Variant calls containing SNP and genotype information |
+          | consensus_sequences.fasta | Consensus sequences generated from variant/locus analysis |
+          | filtered_high_level.vcf | VCF filtered using stricter missingness and MAF thresholds |
+          | filtered_low_level.vcf | VCF filtered using less stringent missingness and MAF thresholds |
+          | populations.plink.* | PLINK-format files generated from VCF data |
+          | ibs_distance_matrix.tsv | Identity-by-state distance matrix for sample comparison |
+          | heatmap_output.html / .png | Visualisation output showing sample relatedness or clustering |
+
+      - title_md: File formats used
+        description_md: |
+          | **Type** | **Description** |
+          |---------|----------------|
+          | .fastq | Raw sequencing reads |
+          | .vcf | Variant call format containing SNP and genotype data |
+          | .fasta / .fa | Consensus sequences or assembled loci |
+          | .ped / .map | PLINK genotype input files |
+          | .tsv / .txt | Tabular outputs, filtering summaries, or distance matrices |
+          | .html / .png | Visualisation outputs such as heatmaps |
 
   - id: tools
     title: Tools
