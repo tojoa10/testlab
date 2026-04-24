@@ -7,12 +7,11 @@ tabs:
     content:
       - title_md: About the service
         description_md: |
-          Genotyping-by-sequencing (GBS/ddRADSeq) is used to identify genetic variants across multiple samples for population genetics and related studies.
+          Genotyping-by-sequencing (GBS/ddRADSeq) is used to identify genetic variants across multiple samples for population genetics studies.
 
-          AGRF currently runs GBS analysis using NGSEP because it is efficient for larger sample sets. However, NGSEP is not currently available in Galaxy. This Galaxy section therefore provides STACKS tools as an alternative option for users who want to reanalyse raw FASTQ data in Galaxy.
+          AGRF performs primary GBS analysis using NGSEP due to its efficiency for large sample sets. The outputs typically include variant call files (VCF) and consensus sequences (FASTA).
 
-          Users may also import existing VCF outputs into Galaxy for downstream filtering and analysis using tools such as VCFtools and PLINK.
-
+          This Galaxy section supports downstream analysis of these outputs. Users can import VCF files into Galaxy and perform variant filtering, population genetic analysis, and visualisation using tools such as VCFtools and PLINK.
       - title_md: Results include
         description_md: |
           **Raw read data** - Demultiplexed sequencing reads in FASTQ format
@@ -66,7 +65,6 @@ tabs:
                 - label: Sequencing reads (FASTQ)
                   datatypes:
                     - fastqsanger
-                    - fasta
               outputs:
                 - label: Sample loci
               button_md: Run ustacks
@@ -140,6 +138,11 @@ tabs:
                 - label: Population statistics and export files
               button_md: Run populations
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstacks2_populations%2Fstacks2_populations"
+
+            - title_md: <code>bcftools filter</code> - Filter variant data
+              description_md: Filter variant call files (VCF) based on minor allele frequency (MAF), missing data thresholds, and quality metrics for downstream population analysis.
+              button_md: Launch Tool
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fbcftools_filter%2Fbcftools_filter"
 
   - id: tutorials
     title: Tutorials
