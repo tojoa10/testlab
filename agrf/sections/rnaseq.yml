@@ -3,13 +3,74 @@ title: RNASeq
 tabs:
   - id: overview
     title: Overview
-    heading_md: 
     content:
-      - title_md: RNASeq workflow
+      - title_md: About the service
         description_md: |
-          RNA sequencing (RNASeq) measures gene expression levels across samples.
-          The workflow includes alignment, filtering, normalization,
-          differential expression analysis and visualization.
+          RNA sequencing (RNASeq) is used to quantify gene expression and identify differentially expressed genes across biological conditions. In this workflow, raw sequencing reads are quality checked, filtered, and aligned to a reference genome using STAR. Gene-level quantification is performed using featureCounts or StringTie, followed by statistical analysis using edgeR or DESeq2.
+
+          This pipeline enables identification of transcriptional changes, biological pathway alterations, and potential biomarkers associated with experimental conditions.
+
+      - title_md: Results include
+        description_md: |
+          RNASeq analysis generates multiple output files at different stages of the workflow.
+
+          **Processed read data**
+          - Quality filtered FASTQ files (optional after trimming)
+
+          **Alignment outputs**
+          - BAM files containing aligned reads
+          - Sorted and indexed BAM files
+
+          **Quantification outputs**
+          - Gene-level count matrix (tabular format)
+          - Transcript abundance estimates (StringTie output)
+
+          **Differential expression results**
+          - Tables of differentially expressed genes (log fold change, p-values, adjusted p-values)
+
+          **Visualisation outputs**
+          - PCA plots (sample clustering)
+          - Heatmaps (expression patterns)
+          - Volcano plots (significance vs fold change)
+
+      - title_md: What files are included?
+        description_md: |
+          **Raw Data**
+          - Demultiplexed FASTQ files (per sample) containing sequencing reads
+
+          **Quality Control**
+          - FastQC reports (HTML) providing per-sample quality metrics
+          - MultiQC summary report aggregating quality results across all samples
+
+          **Alignment**
+          - BAM files containing reads mapped to the reference genome
+
+          **Quantification**
+          - Gene count matrix (.tsv or .txt) containing gene-level expression values
+          - Transcript abundance files (StringTie output)
+
+          **Differential Expression**
+          - DEG results table (.tsv) including log fold change, p-values, and adjusted p-values
+
+          **Visualisation**
+          - PCA plots, heatmaps, and volcano plots for downstream interpretation
+
+      - title_md: File formats used
+        description_md: |
+          **.fastq**
+          - Raw sequencing reads
+
+          **.bam**
+          - Binary alignment file storing mapped reads
+
+          **.tsv / .txt**
+          - Tabular files containing gene counts and statistical results
+
+          **.html**
+          - Quality control reports (FastQC, MultiQC)
+
+          **.csv**
+          - Processed results and downstream analysis tables (e.g., DEG results)
 
   - id: tools
     title: Tools
@@ -26,6 +87,8 @@ tabs:
                 - label: Sequencing reads (FASTQ)
                   datatypes:
                     - fastq
+              outputs:
+                - label: FastQC report (HTML)
               button_md: Run FastQC
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fdevteam%2Ffastqc%2Ffastqc"
 
