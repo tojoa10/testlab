@@ -5,69 +5,53 @@ tabs:
   - id: overview
     title: Overview
     content:
-      - title_md: About the service
-        description_md: |
-          Metagenomics analysis enables the study of microbial communities directly from environmental or host-associated samples without the need for culturing. 
-          This workflow processes sequencing reads through assembly, quality assessment, genome binning, and taxonomic and functional annotation.
 
-          Short-read assemblies are generated using MEGAHIT, while long-read assemblies are performed using meta-hifiasm. 
-          Assembly quality is evaluated using QUAST, and genome binning is carried out using MetaBAT to reconstruct individual microbial genomes.
+        - title_md: About the service
+          description_md: |
+            Illumina metagenomic whole genome sequencing (MetaWGS) is used to characterise microbial communities by sequencing DNA directly from environmental or biological samples.
 
-          Bin quality is assessed using CheckM2, which estimates genome completeness and contamination. 
-          Taxonomic classification is performed using GTDB-Tk, and functional annotation is conducted using Bakta to identify genes and biological functions.
+            Sequencing is performed using paired-end reads (150 bp) on an Illumina NovaSeq platform. Raw sequencing data undergoes quality control and filtering to remove adapter sequences and low-quality bases.
 
-          This pipeline provides insights into microbial diversity, genome composition, and functional potential of complex microbial communities.
+            The processed reads are analysed to determine the taxonomic composition and functional potential of the microbial community. Taxonomic profiling is performed using Kraken2 and Bracken, enabling classification of reads across different taxonomic levels. Functional profiling is performed using HUMAnN2, providing insights into gene families and metabolic pathways present in the samples.
 
-      - title_md: Results include
-        description_md: |
-          Metagenomics analysis generates multiple output files across different stages of the workflow.
+            The final outputs include read count summaries, taxonomic classifications, functional profiling results, and interactive visualisations, allowing comprehensive analysis of microbial community structure and function.
 
-          **Processed read data**
-          - Quality filtered sequencing reads (FASTQ files)
+        - title_md: Sequencing Output
+          description_md: |
+            **Read length:** 150 bp paired-end reads  
 
-          **Assembly outputs**
-          - Contigs or assembled genomes representing microbial sequences
+            **Number of reads:** Varies per sample  
 
-          **Assembly quality assessment**
-          - QUAST reports summarising assembly statistics (e.g., N50, contig length, total assembly size)
+            Raw sequencing reads are provided as FASTQ files containing sequence and quality score information.
 
-          **Genome binning**
-          - Genome bins representing reconstructed microbial genomes
+        - title_md: What files are included?
+          description_md: |
 
-          **Binning quality assessment**
-          - CheckM2 reports indicating completeness and contamination levels of genome bins
+            | Filename | Description |
+            |----------|------------|
+            | readCountsTable.tsv | Read counts for each sample across processing steps (raw, trimmed, classified) |
+            | taxonomic_profiling/{sample_name}/{sample_name}.kraken.report | Taxonomic classification results from Kraken2 |
+            | taxonomic_profiling/{sample_name}/{sample_name}.bracken.tsv | Refined taxonomic abundance estimates from Bracken |
+            | taxonomic_profiling/{sample_name}/{sample_name}.html | Interactive Krona plot for taxonomic composition |
+            | taxonomic_profiling/absolute_abundance.xlsx | Absolute abundance of taxa across samples |
+            | taxonomic_profiling/relative_abundance.xlsx | Relative abundance of taxa across samples |
+            | taxonomic_profiling/barplot/index.html | Interactive barplot visualisation of taxonomic composition |
+            | functional_profiling/{sample_name}_genefamilies.tsv | Gene family abundance per sample |
+            | functional_profiling/{sample_name}_pathabundance.tsv | Pathway abundance per sample |
+            | functional_profiling/{sample_name}_pathcoverage.tsv | Pathway coverage per sample |
+            | functional_profiling/humann2_genefamilies.tsv | Gene family count matrix across samples |
+            | functional_profiling/humann2_pathabundance.tsv | Pathway abundance matrix across samples |
+            | functional_profiling/humann2_pathcoverage.tsv | Pathway coverage matrix across samples |
 
-          **Taxonomic classification**
-          - GTDB-Tk results assigning taxonomy to genome bins
+        - title_md: File formats used
+          description_md: |
 
-          **Functional annotation**
-          - Bakta outputs including gene predictions and functional annotations
-
-          **Summary outputs**
-          - Tables and reports for downstream analysis and interpretation
-
-      - title_md: What files are included?
-        description_md: |
-          | **Filename** | **Description** |
-          |-------------|----------------|
-          | Demultiplexed *.FASTQ files (per sample) | Raw sequencing reads for each sample |
-          | contigs.fasta | Assembled contigs generated from sequencing reads |
-          | quast_report.html | Assembly quality report including N50, contig length, and summary statistics |
-          | bins/*.fa | Genome bins representing reconstructed microbial genomes |
-          | checkm2_results.tsv | Genome bin quality metrics (completeness and contamination) |
-          | gtdbtk_classification.tsv | Taxonomic classification of genome bins using GTDB-Tk |
-          | bakta_annotations.tsv | Functional annotations including gene predictions and protein functions |
-          | summary_tables.tsv | Summary tables for downstream analysis and interpretation |
-
-      - title_md: File formats used
-        description_md: |
-          | **Type** | **Description** |
-          |---------|----------------|
-          | .fastq | Raw sequencing reads |
-          | .fasta / .fa | Assembled contigs or genome bins |
-          | .tsv | Tabular files containing QC metrics, taxonomy, and annotations |
-          | .html | Quality reports (e.g., QUAST) |
-          | .gff | Gene annotations and genomic features |
+            | Type | Description |
+            |------|------------|
+            | .fastq / .fastq.gz | Raw sequencing reads |
+            | .tsv | Tab-separated files for read counts, taxonomy, and functional profiles |
+            | .xlsx | Excel files for abundance tables |
+            | .html | Interactive visualisations (Krona plots, barplots) |
 
   - id: tools
     title: Tools
