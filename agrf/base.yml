@@ -1,0 +1,36 @@
+# Default spec for a Lab page - this is a test
+# Any variables defined here can be used in Md/HTML templates, like:
+# "# Welcome to the Agrf"
+
+site_name: "Australia"
+lab_name: AGRF Lab #this will be in caps, at right of logo
+#or: use the word lab, in same font as agrf logo
+galaxy_base_url: https://usegalaxy.org.au
+subdomain: agrf
+root_domain: usegalaxy.org.au
+
+# The files below must be accessible on the internet, relative to this file
+# -----------------------------------------------------------------------------
+# Custom content relative to this file URL
+header_logo: static/agrf-lab.png #logo at the left hand side
+custom_css: static/custom.css 
+intro_md: templates/intro.md #intro text
+footer_md: templates/footer.md
+conclusion_md: templates/conclusion.md
+
+# Data to be rendered into sections/tabs/accordion elements:
+
+#the sections are the yml files
+
+sections:
+  - sections/data.yml
+  - sections/qualitycontrol.yml
+  - sections/microbial.yml
+  - sections/rnaseq.yml
+  - sections/metagenomics.yml
+  - sections/gbs.yml
+#  - sections/moreanalysis.yml
+  - sections/learn.yml
+#  - sections/help.yml
+#  - sections/agrf.yml
+
