@@ -90,7 +90,7 @@ tabs:
               inputs:
                 - label: Sequencing reads (FASTQ)
                   datatypes:
-                    - fastq
+                    - fastqsanger
               outputs:
                 - label: Trimmed reads (FASTQ)
               button_md: Run Trim Galore
