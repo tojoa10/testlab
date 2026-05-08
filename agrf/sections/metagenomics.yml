@@ -83,7 +83,7 @@ tabs:
               outputs:
                 - label: Assembled contigs (FASTA)
               button_md: Run metaSPAdes
-              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fspades%2Fspades"
+              button_link:  "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fnml%2Fmetaspades%2Fmetaspades"
 
         - id: assembly_qc
           title: Assembly quality control
