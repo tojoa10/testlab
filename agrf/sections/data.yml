@@ -28,16 +28,4 @@ tabs:
       #   button_md: Galaxy tutorials
       #   button_link: "https://training.galaxyproject.org/" 
              
-  - id: help
-    title: Help
-    heading_md: 
-    content:
-
-      - title_md: Galaxy Australia support
-        description_md: Request support, new tools, or additional storage. 
-        button_md: Request support
-        button_link: /request/support
-      - title_md: AGRF support
-        description_md: Contact AGRF for more help with your data. 
-        button_md: Contact AGRF
-        button_link: /request/support
+ 
