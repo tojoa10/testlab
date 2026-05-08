@@ -29,8 +29,10 @@ sections:
   - sections/rnaseq.yml
   - sections/metagenomics.yml
   - sections/gbs.yml
-#  - sections/moreanalysis.yml
   - sections/learn.yml
-#  - sections/help.yml
+  - sections/help_contact.yml
+#  - sections/moreanalysis.yml
+  
+  
 #  - sections/agrf.yml
 
