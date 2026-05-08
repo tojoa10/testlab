@@ -99,6 +99,22 @@ tabs:
                 - label: Assembly quality report
               button_md: Run QUAST
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fquast%2Fquast"
+
+        - id: taxonomicprofiling
+          title: Taxonomic profiling
+          content:
+
+            - title_md: <code>Kraken2</code> - Taxonomic classification
+              description_md: |
+                Classify metagenomic reads against reference databases to identify microbial taxa present in the samples.
+              inputs:
+                - label: FASTQ reads for metagenomic classification
+                  datatypes:
+                    - fastqsanger
+              outputs:
+                - label: Taxonomic classification reports
+              button_md: Run Kraken2
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fkraken2%2Fkraken2"     
           
         - id: binning
           title: Binning
