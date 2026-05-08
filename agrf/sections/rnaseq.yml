@@ -53,7 +53,7 @@ tabs:
           
   - id: tools
     title: Tools
-    content:
+    content: 
       subsections:
  
         - id: qc
@@ -188,9 +188,29 @@ tabs:
             - title_md: Sample filtering
               description_md: |
                 Remove outlier samples or unwanted groups before analysis.
+              inputs:
+                - label: Gene count matrix
+                  datatypes:
+                    - tabular
+                - label: Sample metadata
+                  datatypes:
+                    - tabular
+              outputs:
+                - label: Filtered gene count matrix
+              button_md: Run Filter
+              button_link: "{{ galaxy_base_url }}/?tool_id=Filter1"
+
             - title_md: Filter lowly expressed genes
               description_md: |
                 Remove genes with low counts across samples to improve statistical power in differential expression analysis.
+              inputs:
+                - label: Gene count matrix
+                  datatypes:
+                    - tabular
+              outputs:
+                - label: Filtered gene count matrix
+              button_md: Run Filter
+              button_link: "{{ galaxy_base_url }}/?tool_id=Filter1"
 
         - id: normalization
           title: Normalization
@@ -198,7 +218,18 @@ tabs:
             - title_md: Normalization
               description_md: |
                 Adjusts for differences in sequencing depth and library size between samples to allow accurate comparison of gene expression.
-                
+              inputs:
+                - label: Gene count matrix
+                  datatypes:
+                    - tabular
+                - label: Sample metadata
+                  datatypes:
+                    - tabular
+              outputs:
+                - label: Normalized expression matrix
+              button_md: Run DESeq2
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fdeseq2%2Fdeseq2"
+
         - id: analysis
           title: Differential expression
           content:
@@ -238,6 +269,14 @@ tabs:
             - title_md: PCA - Visualise sample clustering
               description_md: |
                 Explore sample clustering using principal component analysis.
+              inputs:
+                - label: Normalised expression matrix
+                  datatypes:
+                    - tsv
+              outputs:
+                - label: PCA plot 
+              button_md: Run PCA
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fggplot2_pca%2Fggplot2_pca"
               
             - title_md: Heatmap - Visualise gene expression patterns
               description_md: |
@@ -246,6 +285,8 @@ tabs:
                 - label: Expression matrix 
                   datatypes:
                     - tsv
+              outputs:
+                 - label: Heatmap visualisation
               button_md: Run Heatmap
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fggplot2_heatmap2%2Fggplot2_heatmap2"
 
@@ -256,9 +297,10 @@ tabs:
                 - label: Differential expression results (TSV)
                   datatypes:
                     - tsv
+              outputs:
+                - label: Volcano plot visualisation
               button_md: Run Volcano plot
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fvolcanoplot%2Fvolcanoplot"
-
 
   - id: tutorials
     title: Tutorials
