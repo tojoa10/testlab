@@ -7,7 +7,7 @@ tabs:
     content:
       - title_md: About the service
         description_md: |
-          PacBio HiFi full-length 16S data is quality filtered and denoised to high quality amplicon single variants (ASVs) using QIIME2 and DADA2. ASV classification is performed using two approaches. We perform a consensus alignment classification (using VSEARCH) against the Genome Taxonomy Database (GTDB r207). This approach should give high consistency. We also perform naïve Bayesian machine learning based classification (DADA2) using three databases that successively fall over to the next one if a species level match is not found. In order, they are the Genome Taxonomy Database (GTDB r207), the SILVA rRNA database (v138), and the NCBI RefSeq 16S rRNA database supplemented by the Ribosomal Database Project (RDP). This should give better classification for low abundance ASVs
+          PacBio HiFi full-length 16S data is quality filtered and denoised to high quality amplicon single variants (ASVs) using QIIME2 and DADA2. ASV classification is performed using two approaches. We perform a consensus alignment classification (using VSEARCH) against the Genome Taxonomy Database (GTDB r207). This approach should give high consistency. We also perform naïve Bayesian machine learning based classification (DADA2) using three databases that successively fall back to the next database if a species level match is not found. In order, they are the Genome Taxonomy Database (GTDB r207), the SILVA rRNA database (v138), and the NCBI RefSeq 16S rRNA database supplemented by the Ribosomal Database Project (RDP). This should give better classification for low abundance ASVs
           
           ##### Results include
 
@@ -30,7 +30,7 @@ tabs:
 
          **Number of Reads:** Typically greater than 50K reads per sample.
 
-         Read output varies depending on the composition and quality of the sample. Analyses provided by AGRF capps reads at 50K/sample. All reads captured during sequencing are available in the FASTQ files. Reviewing the rarefaction curves can provide insight to whether running an analysis with uncapped reads will provide more information or not.
+         Read output varies depending on the composition and quality of the sample. Analyses provided by AGRF caps reads at 50K/sample. All reads captured during sequencing are available in the FASTQ files. Reviewing the rarefaction curves can provide insight to whether running an analysis with uncapped reads will provide more information or not.
          
       - title_md: What files are included?
         description_md: |
@@ -76,7 +76,7 @@ tabs:
           | Type                                       | Description                                                                                                                     |
           | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
           | `.qza` <br> QIIME Zipped Artifact          | Zip file containing folders for data and data provenance. Can be opened with any zip tool or extracted with QIIME2 exact.       |
-          | `.qzv` <br> QIIME Zipped Visualization     | Zip file containing data and data provenance. Can be visualized with [QIIME 2 View](https://view.qiime2.org/).                  |
+          | `.qzv` <br> QIIME Zipped Visualization     | Zip file containing data and data provenance. Can be visualised with [QIIME 2 View](https://view.qiime2.org/).                  |
           | `.biom` <br> Biological Observation Matrix | Can be imported into popular packages such as phyloseq for downstream processing and visualization. (https://biom-format.org/). |
           | `.tsv` <br> tab separated values           | Table in text file format. Can be opened in any text editor or imported into Excel.                                             |
 
@@ -88,7 +88,7 @@ tabs:
     content:
 
       - title_md: 16S HiFi workflow
-        description_md: PacBio data 
+        description_md: PacBio HiFi full-length 16S sequencing workflow for microbiome analysis.
         button_md: Request support
         button_link: https://usegalaxy.org.au/workflows/run?id=c0a59c4ff4fcc845
 
@@ -375,7 +375,7 @@ tabs:
                
              - title_md: <code>qiime2 diversity pcoa</code> - Principal coordinates analysis 
                description_md: |
-                Perform principal coordinates analysis (PCoA) on a beta diversity distance matrix to visualize the relationships between samples in a reduced dimensional space.
+                Perform principal coordinates analysis (PCoA) on a beta diversity distance matrix to visualise the relationships between samples in a reduced dimensional space.
 
                inputs:
                - label: QIIME 2 Artifact file - Distance Matrix
