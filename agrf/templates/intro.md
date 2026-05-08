@@ -73,24 +73,21 @@ then add Section, so data becomes dataSection
       <div class="grid-item flex-fill"><a href="#rnaseqSection">RNASeq</a></div>
     </div>
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#learnSection">Learn Galaxy</a></div>
-    </div>
-    <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#helpSection">Galaxy Help</a></div>
-    </div>
-    <!-- Row 3 -->
-    <div class="col-md-4 d-flex">
       <div class="grid-item flex-fill"><a href="#metagenomicsSection">Metagenomics</a></div>
     </div>
     <div class="col-md-4 d-flex">
       <div class="grid-item flex-fill"><a href="#gbsSection">GBS</a></div>
     </div>
+    <!-- Row 3 -->
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#agrfSection">Contact AGRF</a></div>
+      <div class="grid-item flex-fill"><a href="#learnSection">Learn Galaxy</a></div>
     </div>
+    <div class="col-md-4 d-flex">
+      <div class="grid-item flex-fill"><a href="#helpSection">Help and Contact</a></div>
+    </div>
+
   </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
