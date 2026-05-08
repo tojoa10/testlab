@@ -1,0 +1,29 @@
+id: help
+title: Help and Contact
+
+tabs:
+  - id: overview
+    title: Overview
+    heading_md:
+
+    content:
+      - title_md: Galaxy Training Network
+        description_md: |
+          Access Galaxy tutorials, training materials, and workflow documentation for RNA-seq, metagenomics, microbial profiling, and GBS analysis.
+
+        button_md: Open Tutorials
+        button_link: "https://training.galaxyproject.org/training-material/"
+
+      - title_md: AGRF Support
+        description_md: |
+          Contact AGRF for workflow guidance, bioinformatics support, and troubleshooting assistance related to AGRF Galaxy Lab services.
+
+        button_md: AGRF Website
+        button_link: "https://www.agrf.org.au/"
+
+      - title_md: Galaxy Australia
+        description_md: |
+          Access Galaxy Australia workflows, tools, and platform resources for bioinformatics analysis.
+
+        button_md: Open Galaxy Australia
+        button_link: "https://usegalaxy.org.au/"
