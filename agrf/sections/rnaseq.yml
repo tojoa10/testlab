@@ -191,10 +191,10 @@ tabs:
               inputs:
                 - label: Gene count matrix
                   datatypes:
-                    - tabular
+                    - tsv
                 - label: Sample metadata
                   datatypes:
-                    - tabular
+                    - tsv
               outputs:
                 - label: Filtered gene count matrix
               button_md: Run Filter
@@ -206,7 +206,7 @@ tabs:
               inputs:
                 - label: Gene count matrix
                   datatypes:
-                    - tabular
+                    - tsv
               outputs:
                 - label: Filtered gene count matrix
               button_md: Run Filter
@@ -221,10 +221,10 @@ tabs:
               inputs:
                 - label: Gene count matrix
                   datatypes:
-                    - tabular
+                    - tsv
                 - label: Sample metadata
                   datatypes:
-                    - tabular
+                    - tsv
               outputs:
                 - label: Normalized expression matrix
               button_md: Run DESeq2
