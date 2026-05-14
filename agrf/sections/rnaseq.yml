@@ -61,7 +61,9 @@ tabs:
           content:
             - title_md: <code>FastQC</code> - Assess sequencing read quality
               description_md: |
-                Assess raw RNASeq read quality including base quality scores, GC content and adapter contamination.
+                Assess the quality of raw RNA-seq reads before downstream analysis. This tool checks base quality scores, GC content, sequence length distribution, duplication levels, and possible adapter contamination.
+               
+                Output: Produces HTML quality reports and summary statistics for each FASTQ file (.html, .zip).
               inputs:
                 - label: Sequencing reads (FASTQ)
                   datatypes:
@@ -73,7 +75,9 @@ tabs:
 
             - title_md: <code>MultiQC</code> - Aggregate QC reports
               description_md: |
-                Aggregate QC reports across multiple samples into a single summary report.
+                Combine quality control reports from multiple samples into one summary report. This tool is useful for comparing FastQC, trimming, alignment, and other QC results across all samples in a project.
+
+                Output: Produces a single interactive summary report across samples (.html).
               inputs:
                 - label: FastQC reports
                   datatypes:
@@ -86,7 +90,9 @@ tabs:
 
             - title_md: <code>Trim Galore</code> - Trim adapters and low-quality bases
               description_md: |
-                Remove adapter sequences and low-quality bases from RNASeq reads before alignment.
+                Remove adapter sequences and low-quality bases from RNA-seq reads before alignment. This step improves read quality and helps reduce alignment errors caused by technical sequence contamination.
+
+                Output: Produces trimmed sequencing reads for downstream analysis (.fastq.gz).
               inputs:
                 - label: Sequencing reads (FASTQ)
                   datatypes:
@@ -98,7 +104,9 @@ tabs:
 
             - title_md: <code>sortmerna</code> - Remove rRNA contamination
               description_md: |
-                Remove rRNA reads from RNASeq data.
+                Identify and remove ribosomal RNA reads from RNA-seq data. This step helps reduce unwanted rRNA contamination so that downstream analysis focuses on informative transcriptomic reads.
+
+                Output: Produces filtered sequencing reads with reduced rRNA content (.fastq.gz).
               inputs:
                 - label: Sequencing reads (FASTQ)
                   datatypes:
@@ -108,13 +116,14 @@ tabs:
               button_md: Run sortmerna
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Frnateam%2Fsortmerna%2Fbg_sortmerna"
 
-
         - id: alignment
           title: Alignment
           content:
             - title_md: <code>STAR</code> - Align reads to reference genome
               description_md: |
-                Align RNASeq reads to a reference genome using STAR.
+                Align RNA-seq reads to a reference genome using the STAR aligner. This step maps sequencing reads to genomic locations and prepares the data for downstream quantification and transcript analysis.
+
+                Output: Produces aligned read files and alignment statistics (.bam, .sam, .tab).
 
               inputs:
                 - label: RNASeq reads (FASTQ)
@@ -136,7 +145,9 @@ tabs:
           content:
             - title_md: <code>samtools sort</code> - Sort BAM files
               description_md: |
-                Sort aligned reads (BAM) by genomic coordinates.
+                Sort aligned BAM files by genomic coordinates. Sorting is required for many downstream tools including indexing, visualisation, and read quantification workflows.
+
+                Output: Produces sorted alignment files suitable for downstream analysis (.bam).
 
               inputs:
                 - label: Aligned reads (BAM)
@@ -152,7 +163,9 @@ tabs:
           content:
             - title_md: <code>featureCounts</code> - Count reads per gene
               description_md: |
-                Convert aligned reads (BAM files) into a gene count matrix required for downstream differential expression analysis.
+                Count the number of reads assigned to genes using aligned BAM files and a gene annotation file. This step converts mapped reads into a gene-level count matrix for statistical analysis.
+
+                Output: Produces gene count tables for downstream filtering, normalisation, and differential expression analysis (.txt, .tsv).
 
               inputs:
                 - label: Aligned reads (BAM)
@@ -169,7 +182,9 @@ tabs:
 
             - title_md: <code>StringTie</code> - Assemble and quantify transcripts
               description_md: |
-                Assemble transcripts and estimate gene expression from aligned RNASeq reads.
+                Assemble transcripts and estimate transcript abundance from aligned RNA-seq reads. This tool can reconstruct transcript structures and support gene or isoform-level expression analysis.
+
+                Output: Produces transcript assembly and expression estimate files (.gtf, .tab).
               inputs:
                 - label: Aligned reads (BAM)
                   datatypes:
@@ -187,7 +202,9 @@ tabs:
           content:
             - title_md: Sample filtering
               description_md: |
-                Remove outlier samples or unwanted groups before analysis.
+                Remove unwanted samples, outliers, or selected sample groups before downstream analysis. This step helps ensure that only relevant samples are included in expression analysis and visualisation.
+
+                Output: Produces filtered count matrices and metadata tables containing selected samples (.tsv, .txt).
               inputs:
                 - label: Gene count matrix
                   datatypes:
@@ -202,7 +219,9 @@ tabs:
 
             - title_md: Filter lowly expressed genes
               description_md: |
-                Remove genes with low counts across samples to improve statistical power in differential expression analysis.
+                Remove genes with very low read counts across samples before statistical testing. Filtering lowly expressed genes helps reduce noise and improves the reliability of differential expression analysis.
+
+                Output: Produces filtered gene count matrices suitable for downstream analysis (.tsv, .txt).
               inputs:
                 - label: Gene count matrix
                   datatypes:
@@ -217,7 +236,9 @@ tabs:
           content:
             - title_md: Normalization
               description_md: |
-                Adjusts for differences in sequencing depth and library size between samples to allow accurate comparison of gene expression.
+                Adjust gene counts to account for differences in sequencing depth and library size between samples. Normalisation makes gene expression values more comparable across samples before visualisation or differential expression analysis.
+
+                Output: Produces normalised expression values or internally normalised count matrices for downstream statistical analysis (.tsv, .txt).
               inputs:
                 - label: Gene count matrix
                   datatypes:
@@ -235,7 +256,9 @@ tabs:
           content:
             - title_md: <code>edgeR</code> - Differential expression analysis
               description_md: |
-                Differential gene expression analysis.
+                Perform differential expression analysis to identify genes with significant expression differences between sample groups. edgeR is commonly used for RNA-seq count data and models biological variation between replicates.
+
+                Output: Produces differential expression result tables containing log fold change, p-values, and adjusted significance values (.tsv, .txt).
               inputs:
                 - label: Gene count matrix
                   datatypes:
@@ -250,7 +273,9 @@ tabs:
 
             - title_md: <code>DESeq2</code> - Differential gene expression analysis
               description_md: |
-                Identify differentially expressed genes between groups.
+                Identify differentially expressed genes between sample groups using RNA-seq count data. DESeq2 includes normalisation and statistical testing steps to compare gene expression across experimental conditions.
+
+                Output: Produces differential expression result tables with log fold change, p-values, and adjusted significance values (.tsv, .txt).
               inputs:
                 - label: Gene count matrix
                   datatypes:
@@ -268,7 +293,9 @@ tabs:
           content:
             - title_md: PCA - Visualise sample clustering
               description_md: |
-                Explore sample clustering using principal component analysis.
+                Explore sample clustering using principal component analysis based on expression values. PCA helps identify major sources of variation, outliers, and whether samples group according to biological or experimental conditions.
+
+                Output: Produces PCA plots showing sample relationships and clustering patterns (.png, .pdf, .html).
               inputs:
                 - label: Normalised expression matrix
                   datatypes:
@@ -280,7 +307,9 @@ tabs:
               
             - title_md: Heatmap - Visualise gene expression patterns
               description_md: |
-                Display gene expression patterns across samples.
+                Visualise gene expression patterns across samples using a heatmap. Heatmaps help identify clusters of genes or samples with similar expression profiles.
+
+                Output: Produces heatmap visualisations showing expression patterns across selected genes and samples (.png, .pdf, .html).
               inputs:
                 - label: Expression matrix 
                   datatypes:
@@ -292,7 +321,9 @@ tabs:
 
             - title_md: Volcano plot - Visualise differential expression results
               description_md: |
-                Visualise differential expression results (log fold change vs significance).
+                Visualise differential expression results by plotting log fold change against statistical significance. Volcano plots help identify genes with large expression changes and strong statistical support.
+
+                Output: Produces volcano plot visualisations highlighting significantly upregulated and downregulated genes (.png, .pdf, .html).
               inputs:
                 - label: Differential expression results (TSV)
                   datatypes:
