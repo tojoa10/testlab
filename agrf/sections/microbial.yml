@@ -7,15 +7,15 @@ tabs:
     content:
       - title_md: About the service
         description_md: |
-          PacBio HiFi full-length 16S data is quality filtered and denoised to high quality amplicon single variants (ASVs) using QIIME2 and DADA2. ASV classification is performed using two approaches. We perform a consensus alignment classification (using VSEARCH) against the Genome Taxonomy Database (GTDB r207). This approach should give high consistency. We also perform naïve Bayesian machine learning based classification (DADA2) using three databases that successively fall back to the next database if a species level match is not found. In order, they are the Genome Taxonomy Database (GTDB r207), the SILVA rRNA database (v138), and the NCBI RefSeq 16S rRNA database supplemented by the Ribosomal Database Project (RDP). This should give better classification for low abundance ASVs
+          PacBio HiFi full-length 16S data is quality filtered and denoised to high quality amplicon single variants (ASVs) using QIIME2 and DADA2. ASV classification is performed using two approaches. We perform a consensus alignment classification (using VSEARCH) against the Genome Taxonomy Database (GTDB r207). This approach should give high consistency. We also perform naïve Bayesian machine learning based classification (DADA2) using three databases that successively fall back to the next database if a species level match is not found. In order, they are the Genome Taxonomy Database (GTDB r207), the SILVA rRNA database (v138), and the NCBI RefSeq 16S rRNA database supplemented by the Ribosomal Database Project (RDP). This approach may improve classification sensitivity for low-abundance ASVs.
           
           ##### Results include
 
           **HiFi read data**
 
-            - Demultiplexed .FASTQ files (per sample).
+            - Demultiplexed FASTQ files (.fastq).
 
-          **A summary report (html):**
+          **A summary report (.html):**
 
             - Project summary QC statistics
             - Table of quality filtered read counts (per sample)
@@ -30,7 +30,7 @@ tabs:
 
          **Number of Reads:** Typically greater than 50K reads per sample.
 
-         Read output varies depending on the composition and quality of the sample. Analyses provided by AGRF caps reads at 50K/sample. All reads captured during sequencing are available in the FASTQ files. Reviewing the rarefaction curves can provide insight to whether running an analysis with uncapped reads will provide more information or not.
+         Read output varies depending on sample composition and sequencing quality. Analyses provided by AGRF caps reads at 50K/sample. All reads captured during sequencing are available in the FASTQ files. Reviewing the rarefaction curves can provide insight to whether running an analysis with uncapped reads will provide more information or not.
          
       - title_md: What files are included?
         description_md: |
