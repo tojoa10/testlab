@@ -1,78 +1,87 @@
+
 id: qc
 title: Quality control
+
 tabs:
   - id: help
     title: Overview
-    heading_md: >
+    heading_md:
     content:
       - title_md: What is quality control?
         description_md: |
-          Assess the quality and characteristics of your raw sequencing data, and perform data cleaning prior to analysis. 
+          Quality control helps assess raw sequencing data before analysis. It can identify issues such as low-quality reads, adapter contamination, unusual sequence composition, or format problems.
+          This step helps decide whether data cleaning, trimming, filtering, or format conversion is needed before running downstream workflows.
         button_md: Quality Control Tutorial
         button_link: https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html
+
       - title_md: What tools and workflows can I use for quality control?
         description_md: |
-          * Galaxy has a range of tools available to perform quality control. 
-          
-          * Select your datatype in the tabs above to see relevant tools and workflows.
+          * Galaxy provides tools and workflows for checking read quality, trimming adapters, filtering low-quality reads, and summarising QC results.
+          * Select the relevant datatype tab above to view Illumina or PacBio quality control options.
+
       - title_md: Converting data to different formats
         description_md: |
-          Some tools require data in different formats. 
-          Learn about converting between <code>bam</code>, <code>fastq</code> and <code>fastqsanger</code> formats, and compressing/uncompressing files.
+          Some tools require data in specific formats. You may need to convert between <code>BAM</code>, <code>FASTQ</code>, and <code>FASTQ-Sanger</code> formats, or compress and uncompress files before analysis.
         button_md: Tutorial
-        button_link: add link
+        button_link: https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-rules/tutorial.html
 
   - id: Illumina
     title: Illumina data
-    heading_md: 
+    heading_md:
     content:
       - title_md: <code>FastQC</code> - produce sequence quality reports
-        description_md: >
-          <p>
-            Generate a range of reports about raw data quality and characteristics.
-          </p>
+        description_md: |
+          Assess the quality of raw Illumina sequencing reads before downstream analysis. FastQC reports quality scores, GC content, sequence length distribution, duplication levels, and possible adapter contamination.
+
+          Output: Produces per-sample sequence quality reports and summary statistics (.html, .zip).
         inputs:
           - datatypes:
               - fastq
               - fastq.gz
         button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fdevteam%2Ffastqc%2Ffastqc"
+
       - title_md: <code>FastP</code> - produce sequence quality reports, trimming & filtering
-        description_md: >
-          <p>
-            This tool is faster than FastQC, and can also trim reads and filter by quality.
-          </p>
+        description_md: |
+          Perform read quality control, adapter trimming, and filtering for Illumina sequencing reads. FastP can remove low-quality bases, trim adapters, filter poor-quality reads, and generate quality reports.
+
+          Output: Produces cleaned FASTQ reads and quality control reports (.fastq.gz, .html, .json).
         inputs:
           - datatypes:
               - fastqsanger
               - fastqsanger.gz
         button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Ffastp%2Ffastp"
+
       - title_md: <code>QC of Illumina data</code> - workflow
-        description_md: >
-          <p>
-            QC of paired-end Illumina data. <br> <br> Tools: <code>FastQC</code> <code>MultiQC</code>
-          </p>
+        description_md: |
+          Run a paired-end Illumina quality control workflow using FastQC and MultiQC. This workflow checks read quality across samples and combines QC results into a single summary report.
+
+          Output: Produces FastQC reports and a combined MultiQC summary report (.html, .zip).
         button_link: https://genome.usegalaxy.org.au/u/anna/w/qc-illumina-data
         button_tip: Run workflow
-  
-  - id: Pacbio 
-    title: Pacbio data
-    heading_md: 
-    content:
-      - title_md: <code>Convert BAM files to Fastq</code> - workflow
-        description_md: >
-          <p>
-            Run this workflow first if your raw data is in <code>css.bam</code> format. <br> <br> Tools: <code>SamToFastq</code> <code>Samtools flagstat</code>
-          </p>
-        button_link: link
-        button_tip: Run workflow
 
-      - title_md: <code>Remove Hifi adapters</code> - workflow
-        description_md: >
-          <p>
-            Filter for adapter contamination. <br> <br> Tools: <code>HiFiAdapterFilt</code>
-          </p>
-        button_link: add link
-        button_tip: Run workflow      
+  - id: Pacbio
+    title: PacBio data
+    heading_md:
+    content:
+      - title_md: <code>Convert BAM files to FASTQ</code> - workflow
+        description_md: |
+          Convert PacBio raw read files from BAM format into FASTQ format for downstream analysis.
+          Run this workflow first if your raw PacBio data is supplied in <code>ccs.bam</code> format.
+          
+          Tools: <code>SamToFastq</code> <code>Samtools flagstat</code>
+
+          Output: Produces FASTQ reads and alignment summary statistics (.fastq, .txt).
+      
+
+      - title_md: <code>Remove HiFi adapters</code> - workflow
+        description_md: |
+          Detect and remove adapter-contaminated PacBio HiFi reads before downstream assembly or microbial analysis.
+          This step improves read quality by filtering sequences that may contain residual adapter contamination.
+          
+          Tools: <code>HiFiAdapterFilt</code>
+
+          Output: Produces filtered HiFi read files suitable for downstream analysis (.fastq, .fasta).
+        
 
   # - id: Nanopore 
   #   title: Nanopore data
@@ -100,3 +109,5 @@ tabs:
   #             - fastqsanger
   #       button_link: add tool   
  
+
+
