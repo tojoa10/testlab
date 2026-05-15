@@ -24,7 +24,7 @@ conclusion_md: templates/conclusion.md
 
 sections:
   - sections/data.yml
-  - sections/qualitycontrol.yml
+  - sections/sequencing_qc.yml
   - sections/microbial.yml
   - sections/rnaseq.yml
   - sections/metagenomics.yml

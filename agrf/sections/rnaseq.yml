@@ -31,7 +31,7 @@ tabs:
 
             | Filename | Description |
             |----------|------------|
-            | Demultiplexed *.FASTQ files | Raw sequencing reads for each sample |
+            | Demultiplexed FASTQ files (.fastq.gz) | Raw sequencing reads for each sample |
             | *.bam | Aligned reads mapped to the reference genome |
             | *.bam.bai | BAM index files for visualisation |
             | features_summary.csv | Summary of mapping statistics with genome and exons |
@@ -79,10 +79,16 @@ tabs:
 
                 Output: Produces a single interactive summary report across samples (.html).
               inputs:
-                - label: FastQC reports
+                - label: FastQC reports 
                   datatypes:
                     - html
                     - zip
+                - label: FastP reports
+                  datatypes:
+                    - json
+                - label: Cutadapt / Trim Galore logs
+                  datatypes:
+                    - txt
               outputs:
                 - label: Summary QC report (HTML)
               button_md: Run MultiQC
@@ -126,7 +132,7 @@ tabs:
                 Output: Produces aligned read files and alignment statistics (.bam, .sam, .tab).
 
               inputs:
-                - label: RNASeq reads (FASTQ)
+                - label: RNA-seq reads (FASTQ)
                   datatypes:
                     - fastq
                 - label: Reference genome (fasta)

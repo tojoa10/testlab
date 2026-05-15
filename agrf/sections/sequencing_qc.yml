@@ -1,0 +1,119 @@
+id: qc
+title: Sequencing Quality Control
+
+tabs:
+  - id: help
+    title: Overview
+    heading_md:
+    content:
+      - title_md: What is sequencing quality control?
+        description_md: |
+          Sequencing quality control helps assess raw sequencing data before analysis. It can identify issues such as low-quality reads, adapter contamination, unusual sequence composition, or format problems.
+
+          This step helps decide whether trimming, filtering, format conversion, or other cleaning steps are needed before downstream analysis.
+        button_md: Quality Control Tutorial
+        button_link: https://training.galaxyproject.org/training-material/topics/sequence-analysis/tutorials/quality-control/tutorial.html
+
+      - title_md: What tools can I use for sequencing quality control?
+        description_md: |
+          * Galaxy provides tools for checking read quality, trimming adapters, filtering low-quality reads, and summarising QC results.
+          * Use the Illumina data tab for short-read quality control tools.
+          * Use the PacBio data tab for long-read quality control tools.
+
+      - title_md: Converting data to different formats
+        description_md: |
+          Some tools require data in specific formats. You may need to convert between <code>BAM</code>, <code>FASTQ</code>, and <code>FASTQ-Sanger</code> formats, or compress and uncompress files before analysis.
+        button_md: Tutorial
+        button_link: https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/upload-rules/tutorial.html
+
+  - id: Illumina
+    title: Illumina data
+    heading_md:
+    content:
+      - title_md: <code>FastQC</code> - produce sequence quality reports
+        description_md: |
+          Assess the quality of raw Illumina sequencing reads before downstream analysis. FastQC reports quality scores, GC content, sequence length distribution, duplication levels, and possible adapter contamination.
+
+          Output: Produces sequence quality reports and summary statistics for each sample (.html, .zip).
+        inputs:
+          - label: Sequencing reads
+            datatypes:
+              - fastq
+              - fastq.gz
+              - fastqsanger
+              - fastqsanger.gz
+        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fdevteam%2Ffastqc%2Ffastqc"
+
+      - title_md: <code>FastP</code> - produce sequence quality reports, trimming and filtering
+        description_md: |
+          Perform read quality control, adapter trimming, and filtering for Illumina sequencing reads. FastP can remove low-quality bases, trim adapters, filter poor-quality reads, and generate quality reports.
+
+          Output: Produces cleaned FASTQ reads and quality control reports (.fastq.gz, .html, .json).
+        inputs:
+          - label: Raw Illumina sequencing reads
+            datatypes:
+              - fastqsanger
+              - fastqsanger.gz
+        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Ffastp%2Ffastp"
+
+      - title_md: <code>Cutadapt</code> - trim adapters and low-quality bases
+        description_md: |
+          Remove adapter sequences and low-quality regions from sequencing reads before downstream analysis. This improves read quality and reduces technical sequence contamination.
+
+          Output: Produces trimmed FASTQ reads and trimming reports (.fastq.gz, .txt).
+        inputs:
+          - label: Illumina FASTQ reads
+            datatypes:
+              - fastqsanger
+              - fastqsanger.gz
+        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Flparsons%2Fcutadapt%2Fcutadapt%2F5.2+galaxy0&version=5.2+galaxy0"
+
+      - title_md: <code>MultiQC</code> - summarise quality control reports
+        description_md: |
+          Combine quality control results from multiple samples and tools into one summary report. MultiQC is useful for reviewing FastQC, FastP, Cutadapt, and other QC outputs across a whole project.
+
+          Output: Produces an interactive combined quality control summary report (.html).
+        inputs:
+          - label: FastQC reports
+            datatypes:
+              - html
+              - zip
+
+          - label: FastP reports
+            datatypes:
+              - json
+
+          - label: Cutadapt / Trim Galore logs
+            datatypes:
+              - txt
+        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fmultiqc%2Fmultiqc"
+
+  - id: Pacbio
+    title: PacBio data
+    heading_md:
+    content:
+      - title_md: <code>NanoPlot</code> - visualise long-read sequencing quality
+        description_md: |
+          Assess quality metrics for PacBio and Nanopore long-read sequencing datasets. NanoPlot visualises read length distributions, quality scores, and sequencing yield statistics.
+
+          Output: Produces sequencing quality plots and summary reports (.html, .png, .txt).
+        inputs:
+          - label: Long-read sequencing data
+            datatypes:
+              - fastq
+              - fastq.gz
+              - bam
+        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fnanoplot%2Fnanoplot"
+
+      - title_md: <code>HiFiAdapterFilt</code> - remove PacBio HiFi adapter contamination
+        description_md: |
+          Detect and remove adapter-contaminated PacBio HiFi reads before downstream assembly or microbial analysis. This step improves read quality by filtering sequences that may contain residual adapter contamination.
+
+          Output: Produces filtered HiFi read files suitable for downstream analysis (.fastq, .fasta).
+        inputs:
+          - label: PacBio HiFi sequencing reads
+            datatypes:
+              - fastq
+              - fastq.gz
+              - bam
+        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fgalaxy-australia%2Fhifiadapterfilt%2Fhifiadapterfilt"

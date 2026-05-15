@@ -63,7 +63,7 @@ then add Section, so data becomes dataSection
       <div class="grid-item flex-fill"><a href="#importSection">Import Data</a></div>
     </div>
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#qcSection">Quality Control</a></div>
+      <div class="grid-item flex-fill"><a href="#qcSection">Sequencing Quality Control</a></div>
     </div>
     <div class="col-md-4 d-flex">
       <div class="grid-item flex-fill"><a href="#microbialSection">Microbial Profiling</a></div>
