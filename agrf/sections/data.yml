@@ -1,31 +1,37 @@
 id: import
 title: Import data
+
 tabs:
   - id: overview
     title: Overview
-    heading_md: 
+    heading_md:
+
     content:
+
       - title_md: Get AGRF data into Galaxy
         description_md: |
-          * Find your fastq data at the [AGRF Hub](https://www.agrf.org.au/my-agrf-hub). 
-          * Download this data to your computer.
-          * Upload data from your computer to Galaxy.
-          * Tip: only import the files that you need. 
+          * Find your FASTQ data at the [AGRF Hub](https://www.agrf.org.au/my-agrf-hub).
+          * Download the required files to your computer.
+          * Upload data from your computer into Galaxy.
+          * Tip: only import the files that you need for your analysis.
 
-          *Note: Galaxy and the AGRF Hub are not configured for long-term data storage. Ensure you save raw and processed data to a secure archive.*
+          *Note: Galaxy and the AGRF Hub are not configured for long-term data storage. Ensure raw and processed data are backed up to a secure archive.*
+
         button_md: Upload data
         button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=upload1"
+
       - title_md: Compress large files
         description_md: |
-          * After uploading data, we recommend compressing <code>fastq</code> and <code>fasta</code> files. 
-          * This will save you time and storage space. 
+          * After uploading data, we recommend compressing <code>FASTQ</code> and <code>FASTA</code> files.
+          * Compression reduces storage usage and can improve upload and download performance.
+
         button_md: Compress data
-        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=https://toolshed.g2.bx.psu.edu/repos/iuc/compress_file" #does this need additional text eg %2Frepos% etc?
+        button_link: "https://usegalaxy.org.au/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fcompress_file%2Fcompress_file%2F0.1.0&version=latest"
+
       # - title_md: Learn how to use Galaxy
       #   description_md: |
-      #     * Galaxy Australia is free to use. 
-      #     * Get started with these user-friendly tutorials. 
+      #     * Galaxy Australia is free to use.
+      #     * Get started with these user-friendly tutorials.
+      #
       #   button_md: Galaxy tutorials
-      #   button_link: "https://training.galaxyproject.org/" 
-             
- 
+      #   button_link: "https://training.galaxyproject.org/"
