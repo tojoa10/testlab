@@ -63,7 +63,9 @@ tabs:
           content:
             - title_md: <code>MEGAHIT</code> - Assemble short-reads into contigs
               description_md: |
-                Assemble short reads into contigs for metagenomic analysis.
+                Assemble short-read metagenomic sequencing data into longer contiguous sequences (contigs). MEGAHIT is designed for large and complex metagenomic datasets and helps reconstruct microbial genomes from environmental sequencing reads.
+
+                Output: Produces assembled contig sequences for downstream binning and annotation (.fasta).
               inputs:
                 - label: Sequencing reads (FASTQ)
                   datatypes:
@@ -75,7 +77,9 @@ tabs:
 
             - title_md: <code>metaSPAdes / meta-hifiasm</code> - Assemble long-reads or hybrid reads
               description_md: |
-                Assemble long-read or hybrid metagenomic data (e.g., PacBio).
+                Assemble long-read or hybrid metagenomic sequencing data into high-quality contigs. These assemblers are designed for complex microbial communities and can improve genome reconstruction using long-read or hybrid sequencing approaches.
+
+                Output: Produces assembled contig sequences and assembly graphs for downstream analysis (.fasta, .gfa).
               inputs:
                 - label: Long reads (FASTQ)
                   datatypes:
@@ -90,7 +94,9 @@ tabs:
           content:
             - title_md: <code>QUAST</code> - Assess assembly quality
               description_md: |
-                Assess the quality of assembled contigs, including length, completeness and fragmentation.
+                Assess the quality of metagenomic assemblies by calculating statistics such as contig length, N50, GC content, completeness, and fragmentation. This tool helps evaluate whether assembled contigs are suitable for downstream binning and annotation.
+
+                Output: Produces assembly quality reports and summary statistics (.html, .txt, .tsv).
               inputs:
                 - label: Assembled contigs (FASTA)
                   datatypes:
@@ -106,7 +112,9 @@ tabs:
 
             - title_md: <code>Kraken2</code> - Taxonomic classification
               description_md: |
-                Classify metagenomic reads against reference databases to identify microbial taxa present in the samples.
+                Classify metagenomic sequencing reads against reference databases to identify microbial taxa present in the samples. This tool enables rapid taxonomic profiling of microbial communities from environmental or biological samples.
+
+                Output: Produces taxonomic classification reports and abundance summaries (.txt, .tsv).
               inputs:
                 - label: FASTQ reads for metagenomic classification
                   datatypes:
@@ -121,7 +129,9 @@ tabs:
           content:
             - title_md: <code>MetaBAT2</code> - Bin contigs into genomes
               description_md: |
-                Group assembled contigs into genome bins representing individual microbial genomes.
+                Group assembled contigs into genome bins representing individual microbial genomes based on sequence composition and read coverage patterns. This step helps reconstruct metagenome-assembled genomes (MAGs) from complex microbial communities.
+
+                Output: Produces genome bins for downstream quality assessment and taxonomic analysis (.fasta).
               inputs:
                 - label: Assembled contigs (FASTA)
                   datatypes:
@@ -139,7 +149,9 @@ tabs:
           content:
             - title_md: <code>CheckM2</code> - Assess completeness and contamination
               description_md: |
-                Assess genome bin quality by estimating completeness and contamination.
+                Assess the quality of genome bins by estimating genome completeness and contamination. This tool helps determine whether reconstructed microbial genomes are suitable for downstream taxonomic and functional analysis.
+
+                Output: Produces genome quality assessment reports containing completeness and contamination estimates (.tsv, .txt).
 
               inputs:
                 - label: Genome bins (FASTA)
@@ -156,7 +168,9 @@ tabs:
           content:
             - title_md: <code>GTDB-Tk</code> - Assign taxonomy to genome bins
               description_md: |
-                Assign taxonomy to genome bins using the Genome Taxonomy Database.
+                Assign taxonomy to genome bins using the Genome Taxonomy Database (GTDB). This tool classifies bacterial and archaeal genomes based on phylogenetic placement and reference genome comparison.
+
+                Output: Produces taxonomic classification tables and phylogenetic placement results (.tsv, .tree).
               inputs:
                 - label: Genome bins
                   datatypes:
@@ -171,8 +185,9 @@ tabs:
           content:
             - title_md: <code>Bakta</code> - Functional annotation of genomes
               description_md: |
-                Annotate assembled genomes and bins to identify genes and functional features.
-                This helps in understanding the biological roles of microbial communities.
+                Annotate assembled genomes and genome bins to identify genes, coding sequences, RNAs, and functional features. This tool helps interpret the biological functions and metabolic potential of microbial communities.
+
+                Output: Produces annotated genome files and functional annotation reports (.gff3, .gbff, .faa, .tsv).
               inputs:
                 - label: Genome bins or contigs (FASTA)
                   datatypes:
@@ -181,6 +196,7 @@ tabs:
                 - label: Annotated genomes and functional features
               button_md: Run Bakta
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fbakta%2Fbakta%2F1.9.4%2Bgalaxy1&version=latest"
+
   - id: tutorials           
     title: Tutorials
     content:
