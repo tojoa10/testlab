@@ -8,7 +8,7 @@ tabs:
 
         - title_md: About the service
           description_md: |
-            Illumina metagenomic sequencing (MetaWGS) is used to characterise microbial communities by sequencing DNA directly from environmental or biological samples.
+            Metagenomic sequencing is used to characterise microbial communities by sequencing DNA directly from environmental or biological samples. Both short-read (Illumina) and long-read sequencing approaches can be used depending on the study objectives.
 
             Sequencing is performed using paired-end reads (150 bp) on an Illumina NovaSeq platform. Raw sequencing data undergoes quality control and filtering to remove adapter sequences and low-quality bases.
 
@@ -58,36 +58,65 @@ tabs:
     content:
       subsections:
 
-        - id: assembly
-          title: Assembly
+        - id: short_read_assembly
+          title: Short-read assembly
           content:
-            - title_md: <code>MEGAHIT</code> - Assemble short-reads into contigs
+            - title_md: <code>MEGAHIT</code> - Assemble short-read metagenomes
               description_md: |
-                Assemble short-read metagenomic sequencing data into longer contiguous sequences (contigs). MEGAHIT is designed for large and complex metagenomic datasets and helps reconstruct microbial genomes from environmental sequencing reads.
+                Assemble short-read metagenomic sequencing data into longer contiguous sequences called contigs.
 
-                Output: Produces assembled contig sequences for downstream binning and annotation (.fasta).
+                MEGAHIT is designed for large and complex Illumina metagenomic datasets and helps reconstruct microbial sequences from short-read data.
+
+                Output:
+                Produces assembled contig sequences for downstream binning and annotation (.fasta).
               inputs:
-                - label: Sequencing reads (FASTQ)
+                - label: Illumina short-read FASTQ data
                   datatypes:
                     - fastqsanger
+                    - fastqsanger.gz
               outputs:
-                - label: Assembled contigs (FASTA)
+                - label: Assembled contigs (.fasta)
               button_md: Run MEGAHIT
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fmegahit%2Fmegahit"
 
-            - title_md: <code>metaSPAdes / meta-hifiasm</code> - Assemble long-reads or hybrid reads
+            - title_md: <code>metaSPAdes</code> - Assemble short-read metagenomes
               description_md: |
-                Assemble long-read or hybrid metagenomic sequencing data into high-quality contigs. These assemblers are designed for complex microbial communities and can improve genome reconstruction using long-read or hybrid sequencing approaches.
+                Assemble short-read metagenomic sequencing data into contigs using the metaSPAdes assembler.
 
-                Output: Produces assembled contig sequences and assembly graphs for downstream analysis (.fasta, .gfa).
+                metaSPAdes is designed for metagenomic datasets containing mixed microbial communities and is commonly used for Illumina short-read metagenome assembly.
+
+                Output:
+                Produces assembled contigs and assembly graph files for downstream analysis (.fasta, .gfa).
               inputs:
-                - label: Long reads (FASTQ)
+                - label: Illumina short-read FASTQ data
                   datatypes:
                     - fastqsanger
+                    - fastqsanger.gz
               outputs:
-                - label: Assembled contigs (FASTA)
+                - label: Assembled contigs and assembly graph files (.fasta, .gfa)
               button_md: Run metaSPAdes
-              button_link:  "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fnml%2Fmetaspades%2Fmetaspades"
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fnml%2Fmetaspades%2Fmetaspades"
+
+        - id: long_read_assembly
+          title: Long-read assembly
+          content:
+            - title_md: <code>meta-hifiasm</code> - Assemble PacBio HiFi metagenomes
+              description_md: |
+                Assemble long-read metagenomic sequencing data generated using PacBio HiFi sequencing.
+
+                meta-hifiasm is designed for metagenomic assembly from highly accurate long reads and can generate more contiguous assemblies for complex microbial communities.
+
+                Output:
+                Produces assembled contigs and assembly graph files for downstream analysis (.fasta, .gfa).
+              inputs:
+                - label: PacBio HiFi long-read FASTQ data
+                  datatypes:
+                    - fastqsanger
+                    - fastqsanger.gz
+              outputs:
+                - label: Assembled contigs and assembly graph files (.fasta, .gfa)
+              button_md: Run meta-hifiasm
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fgalaxy-australia%2Fhifiasm_meta%2Fhifiasm_meta"
 
         - id: assembly_qc
           title: Assembly quality control
