@@ -82,6 +82,9 @@ then add Section, so data becomes dataSection
       <div class="grid-item flex-fill"><a href="#metagenomicsSection">Metagenomics</a></div>
     </div>
     <div class="col-md-4 d-flex">
+      <div class="grid-item flex-fill"><a href="#genomeassemblySection">Genome Assembly</a></div>
+    </div>
+    <div class="col-md-4 d-flex">
       <div class="grid-item flex-fill"><a href="#gbsSection">GBS</a></div>
     </div>
     <!-- Row 3 -->
