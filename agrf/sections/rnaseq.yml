@@ -167,6 +167,23 @@ tabs:
         - id: quantification
           title: Gene quantification
           content:
+            - title_md: <code>StringTie</code> - Assemble and quantify transcripts
+              description_md: |
+                Assemble transcripts and estimate transcript abundance from aligned RNA-seq reads. This tool can reconstruct transcript structures and support gene or isoform-level expression analysis.
+
+                Output: Produces transcript assembly and expression estimate files (.gtf, .tab).
+              inputs:
+                - label: Aligned reads (BAM)
+                  datatypes:
+                    - bam
+                - label: Reference annotation (GTF)
+                  datatypes:
+                    - gtf
+              outputs:
+                - label: Transcript assembly (GTF)
+              button_md: Run StringTie
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstringtie%2Fstringtie"
+          
             - title_md: <code>featureCounts</code> - Count reads per gene
               description_md: |
                 Count the number of reads assigned to genes using aligned BAM files and a gene annotation file. This step converts mapped reads into a gene-level count matrix for statistical analysis.
@@ -186,31 +203,14 @@ tabs:
               button_md: Run featureCounts
               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Ffeaturecounts%2Ffeaturecounts"
 
-            - title_md: <code>StringTie</code> - Assemble and quantify transcripts
-              description_md: |
-                Assemble transcripts and estimate transcript abundance from aligned RNA-seq reads. This tool can reconstruct transcript structures and support gene or isoform-level expression analysis.
-
-                Output: Produces transcript assembly and expression estimate files (.gtf, .tab).
-              inputs:
-                - label: Aligned reads (BAM)
-                  datatypes:
-                    - bam
-                - label: Reference annotation (GTF)
-                  datatypes:
-                    - gtf
-              outputs:
-                - label: Transcript assembly (GTF)
-              button_md: Run StringTie
-              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fstringtie%2Fstringtie"
-
         - id: filtering
           title: Filtering
           content:
-            - title_md: Sample filtering
+            - title_md: Filter samples and lowly expressed genes
               description_md: |
-                Remove unwanted samples, outliers, or selected sample groups before downstream analysis. This step helps ensure that only relevant samples are included in expression analysis and visualisation.
+                Filter count matrices by selecting relevant samples and removing lowly expressed genes before differential expression analysis.
 
-                Output: Produces filtered count matrices and metadata tables containing selected samples (.tsv, .txt).
+                Output: Produces filtered count matrices suitable for downstream statistical analysis (.tsv, .txt).
               inputs:
                 - label: Gene count matrix
                   datatypes:
@@ -220,42 +220,10 @@ tabs:
                     - tsv
               outputs:
                 - label: Filtered gene count matrix
+                  datatypes:
+                    - tsv
               button_md: Run Filter
               button_link: "{{ galaxy_base_url }}/?tool_id=Filter1"
-
-            - title_md: Filter lowly expressed genes
-              description_md: |
-                Remove genes with very low read counts across samples before statistical testing. Filtering lowly expressed genes helps reduce noise and improves the reliability of differential expression analysis.
-
-                Output: Produces filtered gene count matrices suitable for downstream analysis (.tsv, .txt).
-              inputs:
-                - label: Gene count matrix
-                  datatypes:
-                    - tsv
-              outputs:
-                - label: Filtered gene count matrix
-              button_md: Run Filter
-              button_link: "{{ galaxy_base_url }}/?tool_id=Filter1"
-
-        - id: normalization
-          title: Normalization
-          content:
-            - title_md: Normalization
-              description_md: |
-                Adjust gene counts to account for differences in sequencing depth and library size between samples. Normalisation makes gene expression values more comparable across samples before visualisation or differential expression analysis.
-
-                Output: Produces normalised expression values or internally normalised count matrices for downstream statistical analysis (.tsv, .txt).
-              inputs:
-                - label: Gene count matrix
-                  datatypes:
-                    - tsv
-                - label: Sample metadata
-                  datatypes:
-                    - tsv
-              outputs:
-                - label: Normalized expression matrix
-              button_md: Run DESeq2
-              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fdeseq2%2Fdeseq2"
 
         - id: analysis
           title: Differential expression
