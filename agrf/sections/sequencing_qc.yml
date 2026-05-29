@@ -17,8 +17,8 @@ tabs:
       - title_md: What tools can I use for sequencing quality control?
         description_md: |
           * Galaxy provides tools for checking read quality, trimming adapters, filtering low-quality reads, and summarising QC results.
-          * Use the Illumina data tab for short-read quality control tools.
-          * Use the PacBio data tab for long-read quality control tools.
+          * Use the Illumina data tab for short-read sequencing quality control tools.
+          * Use the PacBio data tab for long-read sequencing quality control tools.
 
       - title_md: Converting data to different formats
         description_md: |
@@ -30,7 +30,7 @@ tabs:
     title: Illumina data
     heading_md:
     content:
-      - title_md: <code>FastQC</code> - produce sequence quality reports
+      - title_md: <code>FastQC</code> - assess sequencing quality
         description_md: |
           Assess the quality of raw Illumina sequencing reads before downstream analysis. FastQC reports quality scores, GC content, sequence length distribution, duplication levels, and possible adapter contamination.
 
@@ -44,7 +44,7 @@ tabs:
               - fastqsanger.gz
         button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fdevteam%2Ffastqc%2Ffastqc"
 
-      - title_md: <code>FastP</code> - produce sequence quality reports, trimming and filtering
+      - title_md: <code>FastP</code> - trim and filter sequencing reads
         description_md: |
           Perform read quality control, adapter trimming, and filtering for Illumina sequencing reads. FastP can remove low-quality bases, trim adapters, filter poor-quality reads, and generate quality reports.
 
@@ -92,9 +92,27 @@ tabs:
     title: PacBio data
     heading_md:
     content:
+      - title_md: PacBio quality control
+        description_md: |
+          PacBio HiFi sequencing data is typically assessed using PacBio SmartLink software, which provides sequencing run metrics, read quality summaries, and quality control reports.
+
+          SmartLink is not currently available within Galaxy. The tools listed below provide basic quality control functionality for PacBio long-read data within Galaxy.
+
+      - title_md: <code>FastQC</code> - basic sequence quality assessment
+        description_md: |
+          FastQC can be used to assess basic sequence quality metrics for PacBio FASTQ files, including read quality scores, sequence length distributions, and sequence composition.
+
+          Output: Produces sequence quality reports and summary statistics (.html, .zip).
+        inputs:
+          - label: PacBio FASTQ reads
+            datatypes:
+              - fastq
+              - fastq.gz
+        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fdevteam%2Ffastqc%2Ffastqc"
+
       - title_md: <code>NanoPlot</code> - visualise long-read sequencing quality
         description_md: |
-          Assess quality metrics for PacBio and Nanopore long-read sequencing datasets. NanoPlot visualises read length distributions, quality scores, and sequencing yield statistics.
+          Assess quality metrics for PacBio and Nanopore long-read sequencing datasets. NanoPlot visualises read length distributions, quality scores, sequencing yield, and other long-read summary statistics.
 
           Output: Produces sequencing quality plots and summary reports (.html, .png, .txt).
         inputs:
@@ -104,16 +122,3 @@ tabs:
               - fastq.gz
               - bam
         button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fnanoplot%2Fnanoplot"
-
-      - title_md: <code>HiFiAdapterFilt</code> - remove PacBio HiFi adapter contamination
-        description_md: |
-          Detect and remove adapter-contaminated PacBio HiFi reads before downstream assembly or microbial analysis. This step improves read quality by filtering sequences that may contain residual adapter contamination.
-
-          Output: Produces filtered HiFi read files suitable for downstream analysis (.fastq, .fasta).
-        inputs:
-          - label: PacBio HiFi sequencing reads
-            datatypes:
-              - fastq
-              - fastq.gz
-              - bam
-        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fgalaxy-australia%2Fhifiadapterfilt%2Fhifiadapterfilt"
