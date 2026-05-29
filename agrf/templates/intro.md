@@ -1,5 +1,9 @@
 Welcome to the Galaxy {{ site_name }} {{ lab_name }}! 
 
+<div style="margin-top: 15px; margin-bottom: 20px; padding: 12px; border-left: 4px solid #0d6efd; background-color: #f8f9fa;">
+  <strong>Important:</strong> This Galaxy Lab provides self-serve links to Galaxy tools and training resources. AGRF does not provide support for running or troubleshooting these tools directly. For Galaxy platform or tool issues, please contact Galaxy Australia support. For complex analyses or custom bioinformatics projects, please contact AGRF to discuss service options.
+</div>
+
 
 
 <!-- example grid system with links, 
@@ -8,6 +12,8 @@ note that many of the sections here are not yet actual sections as yml files, ju
 
 to link to a section, see what it is called in the yml file (it's id, on the first line)
 then add Section, so data becomes dataSection
+
+
 
 -->
 <!DOCTYPE html>
