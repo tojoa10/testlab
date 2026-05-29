@@ -1,5 +1,9 @@
 Welcome to the Galaxy {{ site_name }} {{ lab_name }}! 
 
+<div style="margin-top: 15px; margin-bottom: 20px; padding: 12px; border-left: 4px solid #0d6efd; background-color: #f8f9fa;">
+  <strong>Important:</strong> This Galaxy Lab provides self-serve links to Galaxy tools and training resources. AGRF does not provide support for running or troubleshooting these tools directly. For Galaxy platform or tool issues, please contact Galaxy Australia support. For complex analyses or custom bioinformatics projects, please contact AGRF to discuss service options.
+</div>
+
 
 
 <!-- example grid system with links, 
@@ -8,6 +12,8 @@ note that many of the sections here are not yet actual sections as yml files, ju
 
 to link to a section, see what it is called in the yml file (it's id, on the first line)
 then add Section, so data becomes dataSection
+
+
 
 -->
 <!DOCTYPE html>
@@ -63,25 +69,34 @@ then add Section, so data becomes dataSection
       <div class="grid-item flex-fill"><a href="#importSection">Import Data</a></div>
     </div>
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#qcSection">Quality Control</a></div>
+      <div class="grid-item flex-fill"><a href="#qcSection">Sequencing Quality Control</a></div>
     </div>
     <div class="col-md-4 d-flex">
       <div class="grid-item flex-fill"><a href="#microbialSection">Microbial Profiling</a></div>
     </div>
-
     <!-- Row 2 -->
+    <div class="col-md-4 d-flex">
+      <div class="grid-item flex-fill"><a href="#rnaseqSection">RNASeq</a></div>
+    </div>
+    <div class="col-md-4 d-flex">
+      <div class="grid-item flex-fill"><a href="#metagenomicsSection">Metagenomics</a></div>
+    </div>
+    <div class="col-md-4 d-flex">
+      <div class="grid-item flex-fill"><a href="#genomeassemblySection">Genome Assembly</a></div>
+    </div>
+    <div class="col-md-4 d-flex">
+      <div class="grid-item flex-fill"><a href="#gbsSection">GBS</a></div>
+    </div>
+    <!-- Row 3 -->
     <div class="col-md-4 d-flex">
       <div class="grid-item flex-fill"><a href="#learnSection">Learn Galaxy</a></div>
     </div>
     <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#helpSection">Galaxy Help</a></div>
+      <div class="grid-item flex-fill"><a href="#helpSection">Help and Contact</a></div>
     </div>
-    <div class="col-md-4 d-flex">
-      <div class="grid-item flex-fill"><a href="#agrfSection">Contact AGRF</a></div>
-    </div>
+
   </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,14 +1,58 @@
 id: learn
 title: Learn Galaxy
+
 tabs:
   - id: overview
     title: Overview
-    heading_md: 
+    heading_md:
+      Learn how to use Galaxy through tutorials, workflows, and official documentation.
     content:
-      - title_md: abc
+      - title_md: Galaxy Training Resources
         description_md: |
-          * abc
+          Learn how to use Galaxy through step-by-step tutorials from the Galaxy Training Network.
+          These resources cover a wide range of bioinformatics workflows including RNA-seq,
+          microbiome analysis, metagenomics, and variant analysis.
+        button_md: Browse Tutorials
+        button_link: https://training.galaxyproject.org/training-material/
 
-         
-        button_md: Upload data
-        button_link: "{{ galaxy_base_url }}/tool_runner?tool_id=upload1"
+      - title_md: Variant Analysis Tutorials
+        description_md: |
+          Explore tutorials for SNP calling, variant analysis, and related workflows
+          relevant to GBS and population genomics studies.
+        button_md: View Tutorials
+        button_link: https://training.galaxyproject.org/training-material/topics/variant-analysis/
+
+      - title_md: Microbiome Tutorials
+        description_md: |
+          Learn microbial community analysis workflows in Galaxy, including QIIME 2 based
+          approaches for diversity analysis and taxonomic profiling.
+        button_md: View Tutorials
+        button_link: https://training.galaxyproject.org/training-material/topics/microbiome/
+
+      - title_md: RNA-seq Tutorials
+        description_md: |
+          Learn RNA-seq analysis workflows in Galaxy, including alignment, quantification,
+          and differential expression analysis.
+        button_md: View Tutorials
+        button_link: https://training.galaxyproject.org/training-material/topics/transcriptomics/
+
+      - title_md: Metagenomics Tutorials
+        description_md: |
+          Explore tutorials for metagenome assembly, classification, and downstream
+          analysis workflows in Galaxy.
+        button_md: View Tutorials
+        button_link: https://training.galaxyproject.org/training-material/topics/metagenomics/
+
+      - title_md: GBS and Population Genomics Tutorials
+        description_md: |
+          Learn workflows relevant to Genotyping-by-Sequencing (GBS), including variant calling,
+          SNP analysis, and population genomics approaches in Galaxy.
+        button_md: View Tutorials
+        button_link: https://training.galaxyproject.org/training-material/topics/variant-analysis/
+
+      - title_md: Galaxy Help and Documentation
+        description_md: |
+          Access official Galaxy documentation, user guides, and help resources to understand
+          tools, workflows, and data management in Galaxy.
+        button_md: Open Documentation
+        button_link: https://galaxyproject.org/learn/

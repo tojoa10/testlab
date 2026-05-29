@@ -1,0 +1,235 @@
+id: metagenomics
+title: Metagenomics
+
+tabs:
+  - id: overview
+    title: Overview
+    content:
+
+        - title_md: About the service
+          description_md: |
+            Metagenomic sequencing is used to characterise microbial communities by sequencing DNA directly from environmental or biological samples. Both short-read (Illumina) and long-read sequencing approaches can be used depending on the study objectives.
+
+            Sequencing is performed using paired-end reads (150 bp) on an Illumina NovaSeq platform. Raw sequencing data undergoes quality control and filtering to remove adapter sequences and low-quality bases.
+
+            The processed reads are analysed to determine the taxonomic composition and functional potential of the microbial community. Taxonomic profiling is performed using Kraken2 and Bracken, enabling classification of reads across different taxonomic levels. Functional profiling is performed using HUMAnN, providing insights into gene families and metabolic pathways present in the samples.
+
+            The final outputs include read count summaries, taxonomic classifications, functional profiling results, and interactive visualisations, allowing comprehensive analysis of microbial community structure and function.
+
+        - title_md: Sequencing Output
+          description_md: |
+            **Read length:** 150 bp paired-end reads  
+
+            **Number of reads:** Varies per sample  
+
+            Raw sequencing reads are provided as FASTQ files containing sequence and quality score information.
+
+        - title_md: What files are included?
+          description_md: |
+
+            | Filename | Description |
+            |----------|------------|
+            | readCountsTable.tsv | Read counts for each sample across processing steps (raw, trimmed, classified) |
+            | taxonomic_profiling/{sample_name}/{sample_name}.kraken.report | Taxonomic classification results from Kraken2 |
+            | taxonomic_profiling/{sample_name}/{sample_name}.bracken.tsv | Refined taxonomic abundance estimates from Bracken |
+            | taxonomic_profiling/{sample_name}/{sample_name}.html | Interactive Krona plot for taxonomic composition |
+            | taxonomic_profiling/absolute_abundance.xlsx | Absolute abundance of taxa across samples |
+            | taxonomic_profiling/relative_abundance.xlsx | Relative abundance of taxa across samples |
+            | taxonomic_profiling/barplot/index.html | Interactive barplot visualisation of taxonomic composition |
+            | functional_profiling/{sample_name}_genefamilies.tsv | Gene family abundance per sample |
+            | functional_profiling/{sample_name}_pathabundance.tsv | Pathway abundance per sample |
+            | functional_profiling/{sample_name}_pathcoverage.tsv | Pathway coverage per sample |
+            | functional_profiling/humann2_genefamilies.tsv | Gene family count matrix across samples |
+            | functional_profiling/humann2_pathabundance.tsv | Pathway abundance matrix across samples |
+            | functional_profiling/humann2_pathcoverage.tsv | Pathway coverage matrix across samples |
+
+        - title_md: File formats used
+          description_md: |
+
+            | Type | Description |
+            |------|------------|
+            | .fastq / .fastq.gz | Raw sequencing reads |
+            | .tsv | Tab-separated files for read counts, taxonomy, and functional profiles |
+            | .xlsx | Excel files for abundance tables |
+            | .html | Interactive visualisations (Krona plots, barplots) |
+
+  - id: tools
+    title: Tools
+    content:
+      subsections:
+
+        - id: short_read_assembly
+          title: Short-read assembly
+          content:
+            - title_md: <code>MEGAHIT</code> - Assemble short-read metagenomes
+              description_md: |
+                Assemble short-read metagenomic sequencing data into longer contiguous sequences called contigs.
+
+                MEGAHIT is designed for large and complex Illumina metagenomic datasets and helps reconstruct microbial sequences from short-read data.
+
+                Output:
+                Produces assembled contig sequences for downstream binning and annotation (.fasta).
+              inputs:
+                - label: Illumina short-read FASTQ data
+                  datatypes:
+                    - fastqsanger
+                    - fastqsanger.gz
+              outputs:
+                - label: Assembled contigs (.fasta)
+              button_md: Run MEGAHIT
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fmegahit%2Fmegahit"
+
+            - title_md: <code>metaSPAdes</code> - Assemble short-read metagenomes
+              description_md: |
+                Assemble short-read metagenomic sequencing data into contigs using the metaSPAdes assembler.
+
+                metaSPAdes is designed for metagenomic datasets containing mixed microbial communities and is commonly used for Illumina short-read metagenome assembly.
+
+                Output:
+                Produces assembled contigs and assembly graph files for downstream analysis (.fasta, .gfa).
+              inputs:
+                - label: Illumina short-read FASTQ data
+                  datatypes:
+                    - fastqsanger
+                    - fastqsanger.gz
+              outputs:
+                - label: Assembled contigs and assembly graph files (.fasta, .gfa)
+              button_md: Run metaSPAdes
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fnml%2Fmetaspades%2Fmetaspades"
+
+        - id: long_read_assembly
+          title: Long-read assembly
+          content:
+            - title_md: <code>meta-hifiasm</code> - Assemble PacBio HiFi metagenomes
+              description_md: |
+                Assemble long-read metagenomic sequencing data generated using PacBio HiFi sequencing.
+
+                meta-hifiasm is designed for metagenomic assembly from highly accurate long reads and can generate more contiguous assemblies for complex microbial communities.
+
+                Output:
+                Produces assembled contigs and assembly graph files for downstream analysis (.fasta, .gfa).
+              inputs:
+                - label: PacBio HiFi long-read FASTQ data
+                  datatypes:
+                    - fastqsanger
+                    - fastqsanger.gz
+              outputs:
+                - label: Assembled contigs and assembly graph files (.fasta, .gfa)
+              button_md: Run meta-hifiasm
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fgalaxy-australia%2Fhifiasm_meta%2Fhifiasm_meta"
+
+        - id: assembly_qc
+          title: Assembly quality control
+          content:
+            - title_md: <code>QUAST</code> - Assess assembly quality
+              description_md: |
+                Assess the quality of metagenomic assemblies by calculating statistics such as contig length, N50, GC content, completeness, and fragmentation. This tool helps evaluate whether assembled contigs are suitable for downstream binning and annotation.
+
+                Output: Produces assembly quality reports and summary statistics (.html, .txt, .tsv).
+              inputs:
+                - label: Assembled contigs (FASTA)
+                  datatypes:
+                    - fasta
+              outputs:
+                - label: Assembly quality reports (.html, .tsv)
+              button_md: Run QUAST
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fquast%2Fquast"
+
+        - id: taxonomicprofiling
+          title: Taxonomic profiling
+          content:
+
+            - title_md: <code>Kraken2</code> - Taxonomic classification
+              description_md: |
+                Classify metagenomic sequencing reads against reference databases to identify microbial taxa present within the samples. This tool enables rapid taxonomic profiling of microbial communities from environmental or biological samples.
+
+                Output: Produces taxonomic classification reports and abundance summaries (.txt, .tsv).
+              inputs:
+                - label: FASTQ reads for metagenomic classification
+                  datatypes:
+                    - fastqsanger
+              outputs:
+                - label: Taxonomic classification reports
+              button_md: Run Kraken2
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fkraken2%2Fkraken2"     
+          
+        - id: binning
+          title: Binning
+          content:
+            - title_md: <code>MetaBAT2</code> - Bin contigs into genomes
+              description_md: |
+                Group assembled contigs into genome bins representing individual microbial genomes based on sequence composition and read coverage patterns. This step helps reconstruct metagenome-assembled genomes (MAGs) from complex microbial communities.
+
+                Output: Produces genome bins for downstream quality assessment and taxonomic analysis (.fasta).
+              inputs:
+                - label: Assembled contigs (FASTA)
+                  datatypes:
+                    - fasta
+                - label: BAM files generated by mapping reads back to assembled contigs
+                  datatypes:
+                    - bam
+              outputs:
+                - label: Genome bins / MAGs (FASTA)
+              button_md: Run MetaBAT2
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fmetabat2%2Fmetabat2"
+        
+        - id: binning_qc
+          title: Binning quality control
+          content:
+            - title_md: <code>CheckM2</code> - Assess completeness and contamination
+              description_md: |
+                Assess the quality of genome bins by estimating genome completeness and contamination. This tool helps determine whether reconstructed microbial genomes are suitable for downstream taxonomic and functional analysis.
+
+                Output: Produces genome quality assessment reports containing completeness and contamination estimates (.tsv, .txt).
+
+              inputs:
+                - label: Genome bins (FASTA)
+                  datatypes:
+                    - fasta
+              outputs:
+                - label: Completeness and contamination reports (.tsv)
+              button_md: Run CheckM2
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fcheckm2%2Fcheckm2"
+          
+
+        - id: taxonomy
+          title: Taxonomic classification
+          content:
+            - title_md: <code>GTDB-Tk</code> - Assign taxonomy to genome bins
+              description_md: |
+                Assign taxonomy to genome bins using the Genome Taxonomy Database (GTDB). This tool classifies bacterial and archaeal genomes based on phylogenetic placement and reference genome comparison.
+
+                Output: Produces taxonomic classification tables and phylogenetic placement results (.tsv, .tree).
+              inputs:
+                - label: Genome bins
+                  datatypes:
+                    - fasta
+              outputs:
+                - label: Taxonomic classification (TSV)
+              button_md: Run GTDB-Tk
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fgtdbtk_classify_wf%2Fgtdbtk_classify_wf"
+              
+        - id: functional_annotation
+          title: Functional annotation
+          content:
+            - title_md: <code>Bakta</code> - Functional annotation of genomes
+              description_md: |
+                Annotate assembled genomes and genome bins to identify genes, coding sequences, RNAs, and functional features. This tool helps interpret the biological functions and metabolic potential of microbial communities.
+
+                Output: Produces annotated genome files and functional annotation reports (.gff3, .gbff, .faa, .tsv).
+              inputs:
+                - label: Genome bins or contigs (FASTA)
+                  datatypes:
+                    - fasta
+              outputs:
+                - label: Annotated genomes and functional features
+              button_md: Run Bakta
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fbakta%2Fbakta%2F1.9.4%2Bgalaxy1&version=latest"
+
+  - id: tutorials           
+    title: Tutorials
+    content:
+      - title_md: Metagenomics analysis tutorials
+        description_md: Learn how to perform metagenomic analysis in Galaxy, including taxonomic classification, assembly, binning, and downstream functional analysis workflows.
+        button_md: Tutorials
+        button_link: https://training.galaxyproject.org/training-material/topics/metagenomics/

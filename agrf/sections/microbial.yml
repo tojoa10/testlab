@@ -1,5 +1,5 @@
 id: microbial
-title: Microbial profiling - PacBio full length 16S rRNA analysis
+title: Microbial profiling
 tabs:
   - id: overview
     title: Overview
@@ -7,15 +7,21 @@ tabs:
     content:
       - title_md: About the service
         description_md: |
-          PacBio HiFi full-length 16S data is quality filtered and denoised to high quality amplicon single variants (ASVs) using QIIME2 and DADA2. ASV classification is performed using two approaches. We perform a consensus alignment classification (using VSEARCH) against the Genome Taxonomy Database (GTDB r207). This approach should give high consistency. We also perform naïve Bayesian machine learning based classification (DADA2) using three databases that successively fall over to the next one if a species level match is not found. In order, they are the Genome Taxonomy Database (GTDB r207), the SILVA rRNA database (v138), and the NCBI RefSeq 16S rRNA database supplemented by the Ribosomal Database Project (RDP). This should give better classification for low abundance ASVs
+          Microbial profiling is used to identify and compare microbial communities across samples. This can include long-read approaches, such as PacBio HiFi full-length 16S rRNA sequencing, as well as short-read amplicon sequencing approaches.
+          
+          Short-read amplicon sequencing is commonly used for targeted microbial community analysis and taxonomic profiling. Long-read approaches, such as PacBio HiFi full-length 16S sequencing, can provide improved taxonomic resolution by sequencing the full-length 16S rRNA gene.
+
+          The tools and resources in this section support exploration of microbial community composition, diversity analysis, taxonomic classification, and downstream visualisation for both short-read and long-read microbial profiling datasets.
+
+          For PacBio HiFi full-length 16S data, reads are quality filtered and denoised to high-quality amplicon sequence variants (ASVs) using QIIME2 and DADA2. ASV classification is performed using two approaches. We perform a consensus alignment classification using VSEARCH against the Genome Taxonomy Database (GTDB r207). This approach provides consistent taxonomic assignment. We also perform naïve Bayesian classification using three databases that successively fall back to the next database if a species-level match is not found. In order, they are the Genome Taxonomy Database (GTDB r207), the SILVA rRNA database (v138), and the NCBI RefSeq 16S rRNA database supplemented by the Ribosomal Database Project (RDP). This approach may improve classification sensitivity for low-abundance ASVs.
           
           ##### Results include
 
           **HiFi read data**
 
-            - Demultiplexed .FASTQ files (per sample).
+            - Demultiplexed FASTQ files (.fastq).
 
-          **A summary report (html):**
+          **A summary report (.html):**
 
             - Project summary QC statistics
             - Table of quality filtered read counts (per sample)
@@ -30,16 +36,16 @@ tabs:
 
          **Number of Reads:** Typically greater than 50K reads per sample.
 
-         Read output varies depending on the composition and quality of the sample. Analyses provided by AGRF capps reads at 50K/sample. All reads captured during sequencing are available in the FASTQ files. Reviewing the rarefaction curves can provide insight to whether running an analysis with uncapped reads will provide more information or not.
+         Read output varies depending on sample composition and sequencing quality. Analyses provided by AGRF caps reads at 50K/sample. All reads captured during sequencing are available in the FASTQ files. Reviewing the rarefaction curves can provide insight to whether running an analysis with uncapped reads will provide more information or not.
          
       - title_md: What files are included?
         description_md: |
-           | Fileanme                                                                                     | Description                                                                                                                                                                                                                                                                                                  |
+           | Filename                                                                                     | Description                                                                                                                                                                                                                                                                                                  |
            | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
            | **Raw Data**                                                                                 |                                                                                                                                                                                                                                                                                                              |
            | Demultiplexed \*.FASTQ file (1 file per sample)                                              | Contains sequencing reads for each sample                                                                                                                                                                                                                                                                    |
            | **Sequencing Metrics**                                                                       |                                                                                                                                                                                                                                                                                                              |
-           | 📈 samples.demux.summary.qzv                                                                | QIIME visualization summarizing. <br> a) Per-sample sequence counts (inc min, median, mean max, frequency histogram). <br> b) Quality (interactive plot of read length by quality score show seven-number quality summary plus sequence length summary).                                                     |
+           | 📈 samples.demux.summary.qzv                                                                | QIIME visualisation summarizing. <br> a) Per-sample sequence counts (inc min, median, mean max, frequency histogram). <br> b) Quality (interactive plot of read length by quality score show seven-number quality summary plus sequence length summary).                                                     |
            | 🖹 per-sample-fastq-counts.tsv                                                              | Per-sample sequence counts                                                                                                                                                                                                                                                                                   |
            | **Rarefaction**                                                                              |                                                                                                                                                                                                                                                                                                              |
            | 📈 alpha-rarefaction-curves.qzv                                                             | Rarefaction curve showing feature saturation for each sample.                                                                                                                                                                                                                                                |
@@ -66,39 +72,28 @@ tabs:
            | 🖹 unweighted_unifrac_distance_matrix.tsv <br> 🗜️ unweighted_unifrac_distance_matrix.qza | UniFrac metrics are phylogenetically aware, treating closely related organisms as more similar. UniFrac metrics utilize a shared phylogenetic tree to calculate distance is based on the fraction of unshared branch lengths. Unweighted UniFrac uses only the presence or absence of taxa.                  |
            | 🖹 weighted_unifrac_distance_matrix.tsv <br> 🗜️ weighted_unifrac_distance_matrix.qza     | UniFrac metric additionally weights branch length with the abundance difference between the two samples.                                                                                                                                                                                                     |
            | **PCA results and EMPeror plots**                                                            |                                                                                                                                                                                                                                                                                                              |
-           | 🗜️ jaccard_pcoa_results.qza <br> 📈 jaccard_emperor.qzv                                  | PCA results and visualization of the Jaccard distance.                                                                                                                                                                                                                                                       |
-           | 🗜️ bray_curtis_pcoa_results.qza <br> 📈 bray_curtis_emperor.qzv                          | PCA results and visualization of the Bray-Curtis distance.                                                                                                                                                                                                                                                   |
-           | 🗜️ unweighted_unifrac_pcoa_results.qza <br> 📈 unweighted_unifrac_emperor.qzv            | PCA results and visualization of the unweighted UniFrac distance.                                                                                                                                                                                                                                            |
-           | 🗜️ `weighted_unifrac_pcoa_results.qza` <br> 📈 weighted_unifrac_emperor.qzv              | PCA results and visualization of the weighted UniFrac distance.                                                                                                                                                                                                                                              |
+           | 🗜️ jaccard_pcoa_results.qza <br> 📈 jaccard_emperor.qzv                                  | PCA results and visualisation of the Jaccard distance.                                                                                                                                                                                                                                                       |
+           | 🗜️ bray_curtis_pcoa_results.qza <br> 📈 bray_curtis_emperor.qzv                          | PCA results and visualisation of the Bray-Curtis distance.                                                                                                                                                                                                                                                   |
+           | 🗜️ unweighted_unifrac_pcoa_results.qza <br> 📈 unweighted_unifrac_emperor.qzv            | PCA results and visualisation of the unweighted UniFrac distance.                                                                                                                                                                                                                                            |
+           | 🗜️ `weighted_unifrac_pcoa_results.qza` <br> 📈 weighted_unifrac_emperor.qzv              | PCA results and visualisation of the weighted UniFrac distance.                                                                                                                                                                                                                                              |
 
       - title_md: File formats used
         description_md: |
           | Type                                       | Description                                                                                                                     |
           | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
           | `.qza` <br> QIIME Zipped Artifact          | Zip file containing folders for data and data provenance. Can be opened with any zip tool or extracted with QIIME2 exact.       |
-          | `.qzv` <br> QIIME Zipped Visualization     | Zip file containing data and data provenance. Can be visualized with [QIIME 2 View](https://view.qiime2.org/).                  |
-          | `.biom` <br> Biological Observation Matrix | Can be imported into popular packages such as phyloseq for downstream processing and visualization. (https://biom-format.org/). |
+          | `.qzv` <br> QIIME Zipped Visualisation     | Zip file containing data and data provenance. Can be visualised with [QIIME 2 View](https://view.qiime2.org/).                  |
+          | `.biom` <br> Biological Observation Matrix | Can be imported into popular packages such as phyloseq for downstream processing and visualisation. (https://biom-format.org/). |
           | `.tsv` <br> tab separated values           | Table in text file format. Can be opened in any text editor or imported into Excel.                                             |
 
-
-
-  - id: workflows
-    title: Workflows
-    heading_md: 
-    content:
-
-      - title_md: 16S HiFi workflow
-        description_md: PacBio data 
-        button_md: Request support
-        button_link: https://usegalaxy.org.au/workflows/run?id=c0a59c4ff4fcc845
 
   - id: tools
     title: Tools
     content: 
       subsections:
-          - id: QIIME2_formats
-            title: Working with QIIME 2 files
-            content:
+        - id: QIIME2_formats
+          title: Working with QIIME 2 files
+          content:
 
             - title_md: <i>Details</i>
               description_md: |
@@ -132,18 +127,33 @@ tabs:
               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2_core__tools__export%2Fqiime2_core__tools__export"
 
 
-            - title_md: <code>QIIME vizualisation extractor</code> - Visualise .qzv files in Galaxy.
+            - title_md: <code>qiime2 feature-table summarize</code> - Summarize feature table
               description_md: |
-               Use this tool to visualisae .qzv files within Galaxy.
+               Generate a summary of a feature table, including sequence counts per sample, feature frequency distribution, and sequencing depth information. This tool helps assess dataset quality before downstream diversity and taxonomic analysis. 
+               
+               Output: Interactive summary visualisations and sequencing depth statistics for each sample (.qzv).
+              inputs:
+               - label: QIIME 2 Artifact file - FeatureTable[Frequency]
+                 datatypes:
+                  - qza
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__feature_table__summarize%2Fqiime2__feature_table__summarize"
+
+            - title_md: <code>QIIME visualisation extractor</code> - Visualise .qzv files in Galaxy.
+              description_md: |
+               Extract and visualise the contents of QIIME 2 `.qzv` visualisation files directly within Galaxy. This tool allows users to inspect interactive visualisation outputs without downloading files locally.
+               
+               Output: Extracted visualisation contents displayed directly within Galaxy from QIIME visualisation files (.qzv).
               inputs:
                - label: QIIME 2 Visualisation file
                  datatypes:
                   - qzv
               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fqiime_extract_viz%2Fqiime_extract_viz"
 
-            - title_md: <code>QIMME 2 View</code> - Visualise .qza or .qzv files using an online tool
+            - title_md: <code>QIIME 2 View</code> - Visualise .qza or .qzv files using an online tool
               description_md: |
-               Drag and drop QIIME 2 Artifact or Visualisation files from your computer. Best used with .qzv files. While this tool can load .qza files to extract information like citations, providence and metadata, it does not extract the data stored in these files. 
+               Visualise QIIME 2 `.qza` and `.qzv` files using the online QIIME 2 View platform. This tool helps users explore interactive visualisations, metadata, provenance information, and analysis summaries.
+               
+               Output: Interactive online visualisations for QIIME 2 artifact and visualisation files (.qza, .qzv).
               inputs:
                - label: QIIME 2 Artifact or visualisation file
                  datatypes:
@@ -154,14 +164,28 @@ tabs:
               view_tip: View in QIIME2
               
 
-          - id: alpha_diversity
-            title: Alpha Diversity          
+            - title_md: <code>qiime2 feature-table filter-samples</code> - Filter samples using metadata
+              description_md: |
+               Filter samples from a feature table using metadata criteria to remove unwanted samples or outliers before downstream analysis. This tool is commonly used to retain specific sample groups for diversity and taxonomic analysis.
+               
+               Output: A filtered feature table containing only the selected samples (.qza).
+              inputs:
+               - label: QIIME 2 Artifact file - FeatureTable[Frequency]
+                 datatypes:
+                  - qza
+               - label: sample metadata
+                 datatypes:
+                  - tsv
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__feature_table__filter_samples%2Fqiime2__feature_table__filter_samples"
 
-            content:  
+        - id: alpha_diversity
+          title: Alpha Diversity          
 
-             - title_md: <i>Details</i>
-               description_md: |
-                Alpha diversity measures the diversity *within* a single sample. There are a number of different metrics used. AGRF's analysis includes four alpha diversity metrics (stored within separate .qza files).
+          content:  
+
+            - title_md: <i>Details</i>
+              description_md: |
+               Alpha diversity measures the diversity *within* a single sample. There are a number of different metrics used. AGRF's analysis includes four alpha diversity metrics (stored within separate .qza files).
 
                  - `observed_features_vector.qza` - Sample richness per sample. A count of the number of features (i.e. species) observed per sample.
                  - `shannon_vector.qza` - Shannon entropy (i.e. Shannon index) for each sample. This is a quantitative measure of community richness (number of species present) and evenness. Specifically, it quantifies the uncertainty in predicting the species of an individual microbe (or effectively a read) taken at random from the sample.          
@@ -171,14 +195,14 @@ tabs:
                 Each .qza file contains alpha-diversity.tsv which can be extracted in Galaxy using the `qiime tools export` tool. The .tsv contains two columns: [<i><small>sample name.fastq</small></i>] , [<i><small>alpha diversity metric</small></i>]
 
             
-               inputs:
+              inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
 
 
-             - title_md: <code>qiime2 diversity alpha</code> - Calculate alpha diversity (non-phylogenetic)
-               description_md: |
+            - title_md: <code>qiime2 diversity alpha</code> - Calculate alpha diversity (non-phylogenetic)
+              description_md: |
                 Non-phylogenetic alpha diversity metrics provide a general overview of diversity based on counts or proportions. Common examples (included in AGRF's analysis) are: 
 
                 * Observed features (richness)
@@ -187,12 +211,13 @@ tabs:
 
                 Use this tool to calculate other non-phylogenetic alpha diversity metrics.
 
-               inputs:
+                Output: Alpha diversity values for each sample stored as QIIME 2 artifacts (.qza).
+              inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
               
-               buttons:
+              buttons:
                 - icon: run
                   link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
                   tip: QIIME2 - Alpha diversity
@@ -203,30 +228,32 @@ tabs:
                   link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_phylogenetic%2Fqiime2__diversity__alpha_phylogenetic"
                   tip: QIIME2 - Alpha diversity (phlyogenetic)
 
-               #button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
 
 
-             - title_md: <code>qiime2 diversity alpha-phylogenetic</code> - Calculate alpha diversity (with a phylogenetic tree)
-               description_md: |
-                Phylogenetic alpha diversity metrics are useful when evolutionary distinctivness is relevant to your hypothesis (e.g., comparing ecosystems or communities with potentially different evolutionary histories). A common example (included om AGRF's analysis) is:
+            - title_md: <code>qiime2 diversity alpha-phylogenetic</code> - Calculate alpha diversity (with a phylogenetic tree)
+              description_md: |
+                Phylogenetic alpha diversity metrics are useful when evolutionary distinctivness is relevant to your hypothesis (e.g., comparing ecosystems or communities with potentially different evolutionary histories). A common example (included in AGRF's analysis) is:
                 
                 * Faith's Phylogenetic Distance
 
                 Use this tool to calculate other phylogenetic alpha diversity metrics.
+
+                Output: Phylogenetic diversity values for each sample stored as QIIME 2 artifacts (.qza).
                 
-               inputs:
+              inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
          
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_phylogenetic%2Fqiime2__diversity__alpha_phylogenetic"
-               button_link: /request/vcs
-
-             - title_md: <code>qiime2 diversity alpha-correlation</code> - Correlate alpha diversity with sample metadata
-               description_md: |
-                Determine whether numeric sample metadata columns are correlated with alpha diversity.
-
-               inputs:
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_phylogenetic%2Fqiime2__diversity__alpha_phylogenetic"
+              
+            - title_md: <code>qiime2 diversity alpha-correlation</code> - Correlate alpha diversity with sample metadata
+              description_md: |
+                Determine whether numeric sample metadata variables are correlated with alpha diversity values across samples. This analysis helps identify relationships between microbial diversity and experimental or environmental metadata variables.
+                
+                Output: Statistical correlation results and visualisations showing relationships between alpha diversity metrics and metadata variables (.qzv).
+              inputs:
                - label: QIIME 2 Artifact file - Alpha Diversity
                  datatypes:
                   - qza
@@ -235,13 +262,15 @@ tabs:
                   - qza
                   - tsv
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_correlation%2Fqiime2__diversity__alpha_correlation"
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_correlation%2Fqiime2__diversity__alpha_correlation"
 
-             - title_md: <code>qiime2 diversity alpha-group-significance</code> - Correlate alpha diversity with groups in sample metadata
-               description_md: |
-                Visually and statistically compare groups of alpha diversity values.
+            - title_md: <code>qiime2 diversity alpha-group-significance</code> - Correlate alpha diversity with groups in sample metadata
+              description_md: |
+                Statistically compare alpha diversity values between groups defined in the sample metadata. This tool helps determine whether microbial diversity differs significantly between experimental groups or sample categories.
+                
+                Output: Boxplots and statistical significance results comparing alpha diversity between groups (.qzv).
 
-               inputs:
+              inputs:
                - label: QIIME 2 Artifact file - Alpha Diversity
                  datatypes:
                   - qza
@@ -250,37 +279,39 @@ tabs:
                   - qza
                   - tsv
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_group_significance%2Fqiime2__diversity__alpha_group_significance"
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_group_significance%2Fqiime2__diversity__alpha_group_significance"
 
-             - title_md: <code>qiime2 diversity alpha-rarefaction</code> - Assess sequencing depth sufficiency
-               description_md: |
+            - title_md: <code>qiime2 diversity alpha-rarefaction</code> - Assess sequencing depth sufficiency
+              description_md: |
                 QIIME 2 repeatedly subsamples (rarefies) each sample’s sequence data at different depths (e.g., 1000, 2000, 3000 reads, etc.). 
                 For each depth, it calculates an alpha diversity metric (e.g., Shannon index, Faith's PD).
                 It does this multiple times per depth to account for random variation (controlled by the --p-iterations parameter).
                 The result is a curve for each sample showing diversity vs. sampling effort.
 
-               inputs:
+                Output: Rarefaction curves showing diversity trends across sequencing depths for each sample (.qzv).
+
+              inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_rarefaction%2Fqiime2__diversity__alpha_rarefaction"
+              button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_rarefaction%2Fqiime2__diversity__alpha_rarefaction"
 
-          - id: beta_diversity
-            title: Beta Diversity          
+        - id: beta_diversity
+          title: Beta Diversity          
 
-            content:  
+          content:  
 
              - title_md: <i>Details</i>
                description_md: |
-                Beta diversity measures the diversity *between* samples. There are a number of different metrics used. AGRF's analysis includes four beta diversity metrics (stored within separate .qza files).
+                 Beta diversity measures the diversity *between* samples. There are a number of different metrics used. AGRF's analysis includes four beta diversity metrics (stored within separate .qza files).
 
                  - `observed_features_vector.qza` - Sample richness per sample. A count of the number of features (i.e. species) observed per sample.
                  - `shannon_vector.qza` - Shannon entropy (i.e. Shannon index) for each sample. This is a quantitative measure of community richness (number of species present) and evenness. Specifically, it quantifies the uncertainty in predicting the species of an individual microbe (or effectively a read) taken at random from the sample.          
                  - `evenness_vector.qza` - Pielous evenness index for each sample. A measure of how close in numbers (sequence counts) each species in a sample is. It is the ratio of the Shannon index to the maximum possible Shannon index if every species was equally likely. Value between 0 and 1. The closer to 1 the more even.         
                  - `faith_pd_vector.qza` - Faiths phylogenetic distance. A phylogenetically aware alpha diversity metric. Equal to the sum of all branch lengths of the phylogenetic tree that spans all members of the sample. The higher the number the greater the diversity.
 
-                Each .qza file contains alpha-diversity.tsv which can be extracted in Galaxy using the `qiime tools export' tool. The .tsv contains two columns: `[sample name.fastq]` , `[alpha diversity metric]`
+                 Each .qza file contains alpha-diversity.tsv which can be extracted in Galaxy using the `qiime tools export` tool. The .tsv contains two columns: `[sample name.fastq]` , `[alpha diversity metric]`
 
             
                inputs:
@@ -291,42 +322,38 @@ tabs:
 
              - title_md: <code>qiime2 diversity-beta</code> - Calculate beta diversity (non-phylogenetic)
                description_md: |
-                Non-phylogenetic beta diversity metrics provide a general overview of diversity based on counts or proportions. Common examples (included in AGRF's analysis) are: 
-
-                * Observed features (richness)
-                * Shannon Index (richness + evenness)
-                * Pielou's Evenness (how equally distributed species are)
-
-                Use this tool to calculate other non-phylogenetic beta diversity metrics.
+                 Calculate beta diversity metrics to measure differences in microbial community composition between samples. These metrics help identify similarities or differences between microbial communities across samples or experimental groups.
+                
+                 Output: Beta diversity distance matrices for downstream ordination and clustering analysis (.qza).
 
                inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
-             
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha%2Fqiime2__diversity__alpha"
+
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta%2Fqiime2__diversity__beta"
 
 
              - title_md: <code>qiime2 diversity beta-phylogenetic</code> - Calculate beta diversity (with a phylogenetic tree)
                description_md: |
-                Phylogenetic beta diversity metrics are useful when evolutionary distinctivness is relevant to your hypothesis (e.g., comparing ecosystems or communities with potentially different evolutionary histories). A common example (included om AGRF's analysis) is:
+                 Phylogenetic beta diversity metrics are useful when evolutionary distinctivness is relevant to your hypothesis (e.g., comparing ecosystems or communities with potentially different evolutionary histories). A common example (included in AGRF's analysis) is:
                 
-                * Faith's Phylogenetic Distance
+                 * Faith's Phylogenetic Distance
 
-                Use this tool to calculate other phylogenetic beta diversity metrics.
+                 Use this tool to calculate other phylogenetic beta diversity metrics.
                 
                inputs:
                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
                  datatypes:
                   - qza
          
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_phylogenetic%2Fqiime2__diversity__alpha_phylogenetic"
-               button_link: /request/vcs
-
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta_phylogenetic%2Fqiime2__diversity__beta_phylogenetic"
+               
              - title_md: <code>qiime2 diversity beta-correlation</code> - Correlate beta diversity with sample metadata
                description_md: |
-                Determine whether numeric sample metadata columns are correlated with beta diversity.
-
+                 Determine whether numeric sample metadata variables are correlated with beta diversity differences between samples. This analysis helps identify associations between microbial community composition and metadata variables.
+                 
+                 Output: Statistical correlation results describing relationships between beta diversity distances and metadata variables (.qzv).
                inputs:
                - label: QIIME 2 Artifact file - Beta Diversity
                  datatypes:
@@ -335,14 +362,14 @@ tabs:
                  datatypes:
                   - qza
                   - tsv
-              
-               
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_correlation%2Fqiime2__diversity__alpha_correlation"
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta_correlation%2Fqiime2__diversity__beta_correlation"
 
              - title_md: <code>qiime2 diversity beta-group-significance</code> - Correlate beta diversity with groups in sample metadata
                description_md: |
-                Visually and statistically compare groups of beta diversity values.
+                 Statistically compare microbial community composition between groups defined in the sample metadata. This analysis is commonly performed using methods such as PERMANOVA to evaluate whether groups differ significantly in community structure.
+                 
+                 Output: Statistical significance results and visualisations comparing beta diversity between groups (.qzv).
 
                inputs:
                - label: QIIME 2 Artifact file - Beta Diversity
@@ -353,8 +380,21 @@ tabs:
                   - qza
                   - tsv
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_group_significance%2Fqiime2__diversity__alpha_group_significance"
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta_group_significance%2Fqiime2__diversity__beta_group_significance"
+               
+             - title_md: <code>qiime2 diversity pcoa</code> - Principal coordinates analysis 
+               description_md: |
+                Perform principal coordinates analysis (PCoA) on a beta diversity distance matrix to visualise the relationships between samples in a reduced dimensional space. This tool helps identify clustering patterns, sample similarity, and potential separation between experimental groups.
+                
+                Output: Principal coordinate values and ordination results for sample clustering visualisation (.qza).
 
+               inputs:
+               - label: QIIME 2 Artifact file - Distance Matrix
+                 datatypes:
+                  - qza
+
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__pcoa%2Fqiime2__diversity__pcoa"
+            
              - title_md: <code>qiime2 diversity beta-rarefaction</code> - Assess sequencing depth sufficiency
                description_md: |
                 QIIME 2 repeatedly subsamples (rarefies) each sample’s sequence data at different depths (e.g., 1000, 2000, 3000 reads, etc.). 
@@ -367,12 +407,101 @@ tabs:
                  datatypes:
                   - qza
 
-               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__alpha_rarefaction%2Fqiime2__diversity__alpha_rarefaction"
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__diversity__beta_rarefaction%2Fqiime2__diversity__beta_rarefaction"
 
+             - title_md: <code>qiime2 composition ancom</code> - Differential abundance of taxa
+               description_md: |
+                Identify taxa that are differentially abundant between sample groups using ANCOM. This tool helps detect microbial taxa that show significant abundance differences across experimental conditions or metadata categories.
+                
+                Output: Statistical results and visualisations identifying differentially abundant taxa between groups (.qzv).
 
+               inputs:
+               - label: Feature Table
+                 datatypes:
+                  - qza
+               - label: sample metadata
+                 datatypes:
+                  - tsv 
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__composition__ancom%2Fqiime2__composition__ancom"
 
+        
+             - title_md: <code>PICRUSt2 metagenome prediction</code> - Predict microbial functions
+               description_md: |
+                 Predict microbial functional profiles from 16S rRNA sequencing data. This tool estimates potential gene families and metabolic pathways based on the observed microbial community composition.
+                
+                 Output: Predicted functional pathway and gene family abundance tables for downstream analysis (.tsv, .qza).
+               inputs:
+               - label: Sequence abundance table (OTUs or ASVs)
+                 datatypes:
+                    - biom
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fpicrust2_metagenome_pipeline%2Fpicrust2_metagenome_pipeline"
 
+             - title_md: <code>Krona</code> - Interactive taxonomic visualisation
+               description_md: |
+                 Generate interactive hierarchical visualisations of microbial taxonomy and abundance data. This tool allows users to explore microbial composition across multiple taxonomic levels.
+                 
+                 Output: Interactive zoomable taxonomic visualisations for microbial community exploration (.html).
+               inputs:
+               - label: Taxonomy classification table
+                 datatypes:
+                  - tsv
+                  - biom
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fsaskia-hiltemann%2Fkrona_text%2Fkrona-text"
 
+             - title_md: <code>qiime2 feature-table heatmap</code> - Visualise feature abundance as a heatmap
+               description_md: |
+                 Visualise feature abundance patterns across samples using a heatmap. This tool helps identify highly abundant features and differences in feature distribution between samples or groups.
+                 
+                 Output: Interactive heatmaps showing feature abundance across samples (.qzv).
+               inputs: 
+                - label: QIIME 2 Artifact file - FeatureTable[Frequency]
+                  datatypes:
+                    - qza
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__feature_table__heatmap%2Fqiime2__feature_table__heatmap"
+
+             - title_md: <code>qiime2 taxa barplot</code> - Visualise taxonomic composition
+               description_md: |
+                 Visualise microbial taxonomic composition and relative abundance across samples. This tool helps compare community structure at different taxonomic levels between samples or groups.
+                 
+                 Output: Interactive stacked bar plots showing taxonomic abundance across samples (.qzv).
+               inputs:
+                - label: Feature table with taxonomy
+                  datatypes:
+                    - qza
+                - label: Taxonomy assignments
+                  datatypes:
+                    - qza
+                - label: sample metadata
+                  datatypes:
+                    - tsv
+               button_link: "{{ galaxy_base_url }}?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fq2d2%2Fqiime2__taxa__barplot%2Fqiime2__taxa__barplot"
+
+        - id: species_identification
+          title: Species identification and validation
+          content:
+             - title_md: <code>BLAST</code> - Identify sequences using database search
+               description_md: |
+                 Compare query sequences against reference databases to identify similar sequences and possible species matches. This tool is useful for validating species identity or checking sequence similarity against known references.
+                 
+                 Output: Alignment results showing matched reference sequences, similarity scores, and sequence identity (.txt, .tsv).
+               button_md: Run BLAST
+               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu/repos/q2d2/qiime2__feature_classifier__classify_consensus_blast/qiime2__feature_classifier__classify_consensus_blast"
+
+             - title_md: <code>MAFFT</code> - Multiple sequence alignment
+               description_md: |
+                 Align multiple nucleotide sequences with reference sequences for comparison and phylogenetic analysis. This tool helps identify conserved and variable regions across sequences.
+                 
+                 Output: Aligned sequence files for downstream phylogenetic analysis (.fasta).
+               button_md: Run MAFFT
+               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu/repos/q2d2/qiime2__alignment__mafft/qiime2__alignment__mafft"
+
+             - title_md: <code>FastTree</code> - Build phylogenetic tree
+               description_md: |
+                 Build approximately maximum-likelihood phylogenetic trees from aligned sequence data. This tool helps compare evolutionary relationships between sequences or expected species.
+                 
+                 Output: Phylogenetic tree files for visualising sequence relatedness (.nwk).
+               button_md: Run FastTree
+               button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu/repos/iuc/fasttree/fasttree"
 
   - id: tutorials
     title: Tutorials
@@ -380,7 +509,7 @@ tabs:
     content:
 
       - title_md: Calculating α and β diversity from microbiome taxonomic data 
-        description_md: tool
+        description_md:  Learn how to analyse microbiome data in Galaxy, including calculating alpha and beta diversity, exploring taxonomic composition, and visualising microbial community differences.
         button_md: Tutorials
         button_link: https://training.galaxyproject.org/training-material//topics/microbiome/tutorials/diversity/tutorial.html
 
@@ -400,3 +529,4 @@ tabs:
   #       description_md: Contact AGRF for more help with your data. 
   #       button_md: Contact AGRF
   #       button_link: /request/support
+

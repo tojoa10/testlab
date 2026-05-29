@@ -32,8 +32,6 @@ sections:
   - sections/gbs.yml
   - sections/learn.yml
   - sections/help_contact.yml
-#  - sections/moreanalysis.yml
-  
-  
-#  - sections/agrf.yml
-
+# - sections/moreanalysis.yml
+ 
+#  

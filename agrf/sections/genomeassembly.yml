@@ -1,0 +1,164 @@
+id: genomeassembly
+title: Genome Assembly
+
+tabs:
+  - id: overview
+    title: Overview
+    heading_md:
+    content:
+      - title_md: About the service
+        description_md: |
+          Genome assembly is used to reconstruct draft or complete genomes from sequencing reads. This section provides tools for bacterial and small genome assembly using both Illumina short-read and PacBio HiFi long-read sequencing data.
+
+          Short-read assembly tools such as SPAdes are commonly used for bacterial and small genome assembly from Illumina data. Long-read assembly tools such as hifiasm can generate highly contiguous genome assemblies from PacBio HiFi reads.
+
+          Following assembly, quality control and completeness assessment tools can be used to evaluate assembly quality, while annotation tools can identify genes and functional features for downstream comparative genomics analyses.
+
+      - title_md: Results include
+        description_md: |
+          - Assembled genome contigs and scaffolds.
+          - Assembly graph files.
+          - Assembly quality assessment reports.
+          - Genome completeness reports.
+          - Annotated genome files.
+          - Predicted protein and gene sequence files.
+          - Genome comparison and similarity reports.
+
+      - title_md: Common file formats
+        description_md: |
+          | File type | Description |
+          | --------- | ----------- |
+          | `.fastq`, `.fastq.gz` | Raw sequencing reads used as input for assembly. |
+          | `.fasta`, `.fa`, `.fna` | Assembled contigs, scaffolds, or genome sequences. |
+          | `.gfa` | Assembly graph file produced by some assemblers. |
+          | `.gff3`, `.gbff` | Genome annotation files. |
+          | `.faa`, `.ffn` | Predicted protein and nucleotide gene sequences. |
+          | `.tsv`, `.txt`, `.html` | Summary reports and quality assessment outputs. |
+
+  - id: tools
+    title: Tools
+    heading_md:
+    content:
+      subsections:
+        - id: assembly
+          title: Assembly
+          content:
+            - title_md: <code>SPAdes</code> - Assemble bacterial and small genomes
+              description_md: |
+                Assemble Illumina short-read sequencing data into contigs for bacterial and small genome assembly projects. SPAdes is commonly used for de novo assembly of microbial genomes from short-read data.
+
+                Output: Produces assembled contigs and scaffolds for downstream quality control and annotation (.fasta).
+              inputs:
+                - label: Illumina short-read FASTQ data
+                  datatypes:
+                    - fastqsanger
+                    - fastqsanger.gz
+              outputs:
+                - label: Assembled contigs/scaffolds
+              button_md: Run SPAdes
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fnml%2Fspades%2Fspades%2F4.2.0%2Bgalaxy0&version=latest"
+
+            - title_md: <code>hifiasm</code> - Assemble PacBio HiFi genomes
+              description_md: |
+                Assemble PacBio HiFi long-read sequencing data into high-quality genome assemblies. hifiasm is designed for accurate long-read genome assembly and can generate highly contiguous assemblies.
+
+                Output: Produces assembled genome contigs and assembly graph files for downstream analysis (.fasta, .gfa).
+              inputs:
+                - label: PacBio HiFi long-read FASTQ data
+                  datatypes:
+                    - fastqsanger
+                    - fastqsanger.gz
+              outputs:
+                - label: Assembled contigs and assembly graph files
+              button_md: Run hifiasm
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fbgruening%2Fhifiasm%2Fhifiasm"
+
+        - id: assembly_qc
+          title: Assembly quality control
+          content:
+            - title_md: <code>QUAST</code> - Assess assembly quality
+              description_md: |
+                Assess genome assembly quality using summary metrics such as contig number, assembly length, N50, GC content, and other assembly statistics.
+
+                Output: Produces assembly quality reports and summary statistics (.html, .txt, .tsv).
+              inputs:
+                - label: Assembled contigs/scaffolds
+                  datatypes:
+                    - fasta
+              outputs:
+                - label: Assembly quality report
+              button_md: Run QUAST
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fquast%2Fquast"
+
+            - title_md: <code>BUSCO</code> - Assess genome completeness
+              description_md: |
+                Estimate genome assembly completeness by searching for conserved single-copy orthologs expected to be present in a selected lineage. BUSCO helps assess whether a genome assembly is complete and suitable for downstream analysis.
+
+                Output: Produces completeness summaries and BUSCO assessment reports (.txt, .tsv, .json).
+              inputs:
+                - label: Genome assembly
+                  datatypes:
+                    - fasta
+              outputs:
+                - label: Genome completeness report
+              button_md: Run BUSCO
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fbusco%2Fbusco"
+
+        - id: annotation
+          title: Annotation
+          content:
+            - title_md: <code>Bakta</code> - Annotate bacterial genomes
+              description_md: |
+                Annotate bacterial genome assemblies by identifying coding sequences, rRNA genes, tRNA genes, and functional features. Bakta is useful for producing standardised bacterial genome annotations.
+
+                Output: Produces annotated genome files and functional annotation tables (.gff3, .gbff, .faa, .ffn, .tsv).
+              inputs:
+                - label: Bacterial genome assembly
+                  datatypes:
+                    - fasta
+              outputs:
+                - label: Genome annotation files
+              button_md: Run Bakta
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fbakta%2Fbakta"
+     
+        - id: genome_comparison
+          title: Genome comparison
+          content:
+            - title_md: <code>FastANI</code> - Calculate average nucleotide identity
+              description_md: |
+                Compare genome assemblies using Average Nucleotide Identity (ANI). FastANI is commonly used to assess genomic similarity between bacterial genomes and can assist with species-level comparisons.
+
+                Output: Produces ANI similarity statistics and comparison reports (.txt, .tsv).
+              inputs:
+                - label: Genome assemblies
+                  datatypes:
+                    - fasta
+              outputs:
+                - label: ANI comparison report
+              button_md: Run FastANI
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Ffastani%2Ffastani"
+
+            - title_md: <code>MUMmer</code> - Compare genome assemblies
+              description_md: |
+                Compare assembled genomes and identify similarities, differences, and structural variation between assemblies. MUMmer is commonly used for whole-genome alignment and comparative genomics analyses.
+
+                Output: Produces genome alignment and comparison files for downstream visualisation and analysis.
+              inputs:
+                - label: Genome assemblies
+                  datatypes:
+                    - fasta
+              outputs:
+                - label: Genome comparison results
+              button_md: Run MUMmer
+              button_link: "{{ galaxy_base_url }}/?tool_id=toolshed.g2.bx.psu.edu%2Frepos%2Fiuc%2Fmummer_mummer%2Fmummer_mummer%2F4.0.1%2Bgalaxy0&version=latest"
+
+
+  - id: tutorials
+    title: Tutorials
+    heading_md:
+    content:
+      - title_md: Genome assembly training
+        description_md: |
+          Learn about genome assembly concepts, assembly quality control, and downstream analysis using Galaxy training resources.
+        button_md: Galaxy Training
+        button_link: https://training.galaxyproject.org/training-material/topics/assembly/
