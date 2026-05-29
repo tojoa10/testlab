@@ -87,20 +87,6 @@ tabs:
           | `.tsv` <br> tab separated values           | Table in text file format. Can be opened in any text editor or imported into Excel.                                             |
 
 
-
-  - id: workflows
-    title: Workflows
-    heading_md: 
-    content:
-
-      - title_md: Workflow support
-        description_md: |
-          AGRF does not provide support for Galaxy workflows listed on this page.
-
-          For workflow-related questions, troubleshooting, or workflow execution support, please contact Galaxy Australia support.
-
-          Complex analyses, custom bioinformatics projects, or AGRF services can be discussed directly with AGRF.
-
   - id: tools
     title: Tools
     content: 
