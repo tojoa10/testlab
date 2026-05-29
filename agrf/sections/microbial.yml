@@ -1,5 +1,5 @@
 id: microbial
-title: Microbial profiling - PacBio full length 16S rRNA analysis
+title: Microbial profiling
 tabs:
   - id: overview
     title: Overview
@@ -7,7 +7,13 @@ tabs:
     content:
       - title_md: About the service
         description_md: |
-          PacBio HiFi full-length 16S data is quality filtered and denoised to high quality amplicon single variants (ASVs) using QIIME2 and DADA2. ASV classification is performed using two approaches. We perform a consensus alignment classification (using VSEARCH) against the Genome Taxonomy Database (GTDB r207). This approach should give high consistency. We also perform naïve Bayesian machine learning based classification (DADA2) using three databases that successively fall back to the next database if a species level match is not found. In order, they are the Genome Taxonomy Database (GTDB r207), the SILVA rRNA database (v138), and the NCBI RefSeq 16S rRNA database supplemented by the Ribosomal Database Project (RDP). This approach may improve classification sensitivity for low-abundance ASVs.
+          Microbial profiling is used to identify and compare microbial communities across samples. This can include long-read approaches, such as PacBio HiFi full-length 16S rRNA sequencing, as well as short-read amplicon sequencing approaches.
+          
+          Short-read amplicon sequencing is commonly used for targeted microbial community analysis and taxonomic profiling. Long-read approaches, such as PacBio HiFi full-length 16S sequencing, can provide improved taxonomic resolution by sequencing the full-length 16S rRNA gene.
+
+          The tools and resources in this section support exploration of microbial community composition, diversity analysis, taxonomic classification, and downstream visualisation for both short-read and long-read microbial profiling datasets.
+
+          For PacBio HiFi full-length 16S data, reads are quality filtered and denoised to high-quality amplicon sequence variants (ASVs) using QIIME2 and DADA2. ASV classification is performed using two approaches. We perform a consensus alignment classification using VSEARCH against the Genome Taxonomy Database (GTDB r207). This approach provides consistent taxonomic assignment. We also perform naïve Bayesian classification using three databases that successively fall back to the next database if a species-level match is not found. In order, they are the Genome Taxonomy Database (GTDB r207), the SILVA rRNA database (v138), and the NCBI RefSeq 16S rRNA database supplemented by the Ribosomal Database Project (RDP). This approach may improve classification sensitivity for low-abundance ASVs.
           
           ##### Results include
 
@@ -87,10 +93,13 @@ tabs:
     heading_md: 
     content:
 
-      - title_md: 16S HiFi workflow
-        description_md: PacBio HiFi full-length 16S sequencing workflow for microbiome analysis.
-        button_md: Request support
-        button_link: https://usegalaxy.org.au/workflows/run?id=c0a59c4ff4fcc845
+      - title_md: Workflow support
+        description_md: |
+          AGRF does not provide support for Galaxy workflows listed on this page.
+
+          For workflow-related questions, troubleshooting, or workflow execution support, please contact Galaxy Australia support.
+
+          Complex analyses, custom bioinformatics projects, or AGRF services can be discussed directly with AGRF.
 
   - id: tools
     title: Tools
